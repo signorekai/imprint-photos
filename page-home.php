@@ -29,8 +29,8 @@ $query = array(
   'orderby' => 'menu_order',
   'order' => 'ASC',
   'post_status' => 'publish',
-'post_type' => 'portfolio',
-'posts_per_page' => 50
+  'post_type' => 'portfolio',
+  'posts_per_page' => 50
 );
-$context['works'] = get_posts( $query );
+$context['works'] = new Timber\PostQuery( $query );
 Timber::render( 'page-home.twig', $context );
