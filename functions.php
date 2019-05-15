@@ -57,7 +57,9 @@ class StarterSite extends Timber\Site {
 	}
 
 	public function enqueue_scripts() {
-		wp_enqueue_script( 'base-js', get_template_directory_uri() . '/static/site.js', array( 'jquery', 'masonry' ), '1.12.4', true );
+		if (is_front_page()) {
+			wp_enqueue_script( 'base-js', get_template_directory_uri() . '/static/scripts/site.js', array( 'jquery', 'masonry' ), '1.12.4', true );
+		}
 	}
 
 	/** This is where you add some context
