@@ -3,4 +3,9 @@ h1 {
   line-height: 2rem;
   font-weight: 500;
   color: $white;
+
+  @include mobile {
+    font-size: 1.4rem;
+    line-height: 1.6rem;
+  }
 }
