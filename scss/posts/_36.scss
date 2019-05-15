@@ -1,0 +1,23 @@
+
+body.home {
+  background-color: $primary;
+  color: $white;
+
+  > main {
+
+    @include desktop {
+
+      > .wrapper {
+        max-width: 35vw;
+      }
+    }
+  }
+
+  > footer {
+    margin-top: auto;
+  }
+}
+
+#page-36 {
+
+}
