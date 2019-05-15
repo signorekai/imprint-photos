@@ -60,9 +60,6 @@ class StarterSite extends Timber\Site {
 	 * @param string $context context['this'] Being the Twig's {{ this }}.
 	 */
 	public function add_to_context( $context ) {
-		$context['foo'] = 'bar';
-		$context['stuff'] = 'I am a value set in your functions.php file';
-		$context['notes'] = 'These values are available everytime you call Timber::context();';
 		$context['menu'] = new Timber\Menu();
 		$context['site'] = $this;
 		return $context;
@@ -70,7 +67,7 @@ class StarterSite extends Timber\Site {
 
 	public function theme_supports() {
 		// Add default posts and comments RSS feed links to head.
-		add_theme_support( 'automatic-feed-links' );
+		// add_theme_support( 'automatic-feed-links' );
 
 		/*
 		 * Let WordPress manage the document title.
@@ -105,17 +102,7 @@ class StarterSite extends Timber\Site {
 		 *
 		 * See: https://codex.wordpress.org/Post_Formats
 		 */
-		add_theme_support(
-			'post-formats', array(
-				'aside',
-				'image',
-				'video',
-				'quote',
-				'link',
-				'gallery',
-				'audio',
-			)
-		);
+		// 		'link',
 
 		add_theme_support( 'menus' );
 	}
