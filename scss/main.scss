@@ -10,16 +10,78 @@ html, body {
   font-size: 20px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; 
+  margin: 0; 
 }
 
 body, header, div, section, header, main, article, a {
   box-sizing: border-box;
 }
 
-body.home {
-  background-color: $primary;
+a {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  color: $primary;
+
+}
+
+nav.works {
+  max-width: 200px;
+  margin-top: 5vh;
+
+  @include tablet {
+    position: absolute;
+    bottom: $min-margin-v;
+  }
+  &:hover {
+    .works__link {
+      opacity: 0.7;
+    }
+  }
+
+  .works__link {
+    color: $white;
+    display: flex;
+    align-items: center;
+    padding: 4px 10px;
+    margin-left: -10px;
+    max-width: 200px;
+    transition: all 0.2s $easing;
+
+    &:before {
+      content: "";
+      width: 0;
+      height: 0;
+      margin-right: 0;
+      background-color: $white;
+      transition: all 0.2s $easing;
+    }
+    
+    &:hover {
+      opacity: 1;
+      &:before {
+        width: 16px;
+        height: 3px;
+        margin-right: 10px;
+        transform: scale(1);
+      }
+    }
+  }
+}
+
+.wrapper {
+  margin: 0 auto;
+  max-width: $max-width;
+
+  &.--full {
+    max-width: none;
+    height: 100%;
+    margin: $min-margin-v $min-margin-h;
+  }
 }
 
 @import "typography";
 
 @import "components/header";
+
+@import "posts/36";
