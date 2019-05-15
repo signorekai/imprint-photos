@@ -7,12 +7,12 @@
 {% endblock %}
 
 	<body class="{{body_class}}" data-template="base.twig">
-		<header class="header" >
+		<header class="header">
 			{% block header %}
-					<a class="logo-link" href="{{site.url}}" rel="home">
+					<a class="header__logo" href="{{site.url}}" rel="home">
 						{{ source("/static/images/logo--textless--white.svg" )}}
 					</a>
-					<nav id="nav-main" class="nav-main" role="navigation">
+					<nav class="header__nav" role="navigation">
 						{% include "menu.twig" with {'menu': menu.get_items} %}
 					</nav><!-- #nav -->
 			{% endblock %}

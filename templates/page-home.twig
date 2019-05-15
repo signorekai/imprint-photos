@@ -1,7 +1,7 @@
 {% extends "base.twig" %}
 
 {% block content %}
-  <div class="wrapper --full">
+  <div class="wrapper wrapper--full">
       {% for work in works %}
         <div class="overlay" id="overlay-{{work.ID}}" style="background-image: url({{work.thumbnail.src}})"></div>
       {% endfor %}

@@ -1,4 +1,4 @@
-header.header {
+.header {
   width: 100%;
   position: fixed;
   display: flex;
@@ -6,32 +6,25 @@ header.header {
   z-index: 200;
   padding: 0 $min-margin-h;
   
-  > .logo-link {
-    svg {
-      opacity: 0;
-      transition: all 0.2s $easing;
-      transform: translateY(-20px);
+}
 
-      &.--show {
-        pointer-events: all;
-        display: block;
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+#header__svg {
+  opacity: 0;
+  transition: all 0.2s $easing;
+  transform: translateY(-20px);
 
-    #logo-svg{
-      fill: $white;
-    }
-
-    &.show {
-      svg {
-        display: block;
-      }
-    }
+  &.--show {
+    pointer-events: all;
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
   }
-
-  > .nav-main {
-    align-self: flex-end;
+  
+  #logo-svg {
+    fill: $white;
   }
+}
+
+.header__nav {
+  align-self: flex-end;
 }

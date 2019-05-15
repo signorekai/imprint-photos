@@ -4,13 +4,13 @@ jQuery( document ).ready( function( $ ) {
 
   if ($nav) {
     $nav.hover( function() {
-      $($(this).data('target')).addClass('--show');
-      $('header.header .logo-link svg').addClass('--show');
-      $('main article h1').addClass('--hide');
+      $($(this).data('target')).addClass('overlay--show');
+      $('.header__logo svg').addClass('--show');
+      $('main article h1').addClass('h1--hide');
     }, function() {
-      $($(this).data('target')).removeClass('--show');
-      $('main article h1').removeClass('--hide');
-      $('header.header .logo-link svg').removeClass('--show');
+      $($(this).data('target')).removeClass('overlay--show');
+      $('.header__logo svg').removeClass('--show');
+      $('main article h1').removeClass('h1--hide');
     });
   }
 
