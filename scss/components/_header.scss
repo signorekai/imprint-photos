@@ -27,4 +27,49 @@
 
 .header__nav {
   align-self: flex-end;
+  display: flex;
+  align-items: center;
+}
+
+.links {
+  order: 1;
+}
+
+.header__nav-icon {
+  width: 33px;
+  height: 14px;
+  position: relative;
+  order: 2;
+
+  &:before, &:after {
+    content: "";
+    width: 33px;
+    height: 3px;
+    background-color: $white;
+    position: absolute;
+
+    transition: all 0.2s $easing;
+  }
+
+  &:before {
+    top: 0;
+    transform: translateX(-10px);
+  }
+
+  &:after {
+    bottom: 0;
+    transform: translateX(10px);
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    &:before {
+      transform: translateX(-5px);
+    }
+
+    &:after {
+      transform: translateX(5px);
+    }
+  }
 }
