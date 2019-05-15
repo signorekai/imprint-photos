@@ -1,0 +1,25 @@
+header.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  
+  > .logo-link {
+    svg {
+      display: none;
+    }
+
+    #logo-svg{
+      fill: $white;
+    }
+
+    &.show {
+      svg {
+        display: block;
+      }
+    }
+  }
+
+  > .nav-main {
+    align-self: flex-end;
+  }
+}
