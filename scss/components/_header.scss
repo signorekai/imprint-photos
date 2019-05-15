@@ -3,10 +3,21 @@ header.header {
   position: fixed;
   display: flex;
   justify-content: space-between;
+  z-index: 200;
+  padding: 0 $min-margin-h;
   
   > .logo-link {
     svg {
-      display: none;
+      opacity: 0;
+      transition: all 0.2s $easing;
+      transform: translateY(-20px);
+
+      &.--show {
+        pointer-events: all;
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     #logo-svg{
