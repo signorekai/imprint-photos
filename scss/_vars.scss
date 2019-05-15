@@ -4,6 +4,10 @@ $white: #FEFEFE;
 
 $max-width: 1200px;
 $em-base: 16;
+$min-margin-h: 6vw;
+$min-margin-v: 6vh;
+
+$easing: cubic-bezier(.65,.05,.36,1);
 
 // mixins for responsive
 @mixin mobile() {
