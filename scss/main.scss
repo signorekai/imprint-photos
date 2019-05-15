@@ -8,6 +8,18 @@ html, body {
   “Droid Sans”, “Helvetica Neue”, sans-serif;;
   color: $secondary;
   font-size: 20px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; 
+}
+
+body, header, div, section, header, main, article, a {
+  box-sizing: border-box;
+}
+
+body.home {
+  background-color: $primary;
 }
 
 @import "typography";
+
+@import "components/header";
