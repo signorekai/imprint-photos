@@ -1,2 +1,13 @@
 @import "vars";
 @import "normalize";
+
+html, body {
+  font-family: "futura-pt", -apple-system, BlinkMacSystemFont,
+  “Segoe UI”, “Roboto”, “Oxygen”,
+  “Ubuntu”, “Cantarell”, “Fira Sans”,
+  “Droid Sans”, “Helvetica Neue”, sans-serif;;
+  color: $secondary;
+  font-size: 20px;
+}
+
+@import "typography";

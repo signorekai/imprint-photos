@@ -7,13 +7,12 @@
 {% endblock %}
 
 	<body class="{{body_class}}" data-template="base.twig">
-		<a class="skip-link screen-reader-text" href="#content">{{ _e( 'Skip to content') }}</a>
 		<header class="header" >
 			{% block header %}
 				<div class="wrapper">
-					<h1 class="hdr-logo" role="banner">
-						<a class="hdr-logo-link" href="{{site.url}}" rel="home">{{site.name}}</a>
-					</h1>
+						<a class="logo-link" href="{{site.url}}" rel="home">
+							<img src="{{ site.theme.images }}/logo--textless--white.svg" alt="">
+						</a>
 					<nav id="nav-main" class="nav-main" role="navigation">
 						{% include "menu.twig" with {'menu': menu.get_items} %}
 					</nav><!-- #nav -->
