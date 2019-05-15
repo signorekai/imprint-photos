@@ -1,3 +1,78 @@
+.links {
+  @include reset-list;
+  @include clearfix;
+  line-height: 0;
+  background-color: $white;
+  padding: 0;
+  margin: 0;
+  order: 1;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateX(-20px);
+  transition: all 0.4s $easing;
+  margin-right: 20px;
+}
+
+.links__wrapper {
+  @include clearfix;
+  position: relative;
+  z-index: 100;
+  overflow: hidden;
+
+  &:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    z-index: 50;
+    top: 0;
+    left: 0;
+    background-color: $secondary;
+    transition: transform 0.2s $easing;
+    transform: translateX(-100%) skewX(10deg);
+    opacity: 0;
+    position: absolute;
+  }
+
+  &:hover {
+    &:before {
+      opacity: 1;
+      transform: translateX(0) skewX(0deg) !important;
+    }
+  }
+
+  &:first-child .links__item {
+    padding-left: 20px;
+  }
+
+  &:last-child:before {
+    transform: translateX(100%) skewX(-10deg);
+    // padding-right: 20px;
+  }
+
+  &:last-child .links__item {
+    padding-right: 20px;
+  }
+}
+
+.links__item {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: $primary;
+  font-weight: normal;
+  padding: 20px 10px;
+  display: block;
+  font-weight: 600;
+  position: relative;
+  z-index: 100;
+  transition: all 0.2s $easing;
+
+  &:hover {
+    color: $white;
+    padding: 20px;
+  }
+}
+
 .header {
   width: 100%;
   position: fixed;
@@ -5,7 +80,7 @@
   justify-content: space-between;
   z-index: 200;
   padding: 0 $min-margin-h;
-  
+  height: 51px; 
 }
 
 #header__svg {
@@ -26,50 +101,81 @@
 }
 
 .header__nav {
-  align-self: flex-end;
   display: flex;
   align-items: center;
 }
 
-.links {
-  order: 1;
-}
-
 .header__nav-icon {
-  width: 33px;
-  height: 14px;
+  $size: 33px;
+  width: $size;
+  height: $size;
   position: relative;
   order: 2;
+  transition: all 0.2s $easing;
+  transform-origin: center center;
 
   &:before, &:after {
     content: "";
-    width: 33px;
+    width: 90%;
     height: 3px;
     background-color: $white;
     position: absolute;
-
     transition: all 0.2s $easing;
   }
 
   &:before {
     top: 0;
-    transform: translateX(-10px);
+    left: 5%;
+    transform: translate(-6px, $size * 0.25);
   }
 
   &:after {
     bottom: 0;
-    transform: translateX(10px);
+    left: 5%;
+    transform: translate(6px, $size * -0.25);
   }
 
   &:hover {
     cursor: pointer;
 
     &:before {
-      transform: translateX(-5px);
+      transform: translate(-3px, $size * 0.25);
     }
 
     &:after {
-      transform: translateX(5px);
+      transform: translate(3px, $size * -0.25);
     }
+  }
+}
+
+.header__nav-icon--active {
+  $size: 21px;
+  width: $size;
+  height: $size;
+
+  &:before, &:after {
+    border-radius: 2px;
+    background-color: #5463b9;
+  }
+
+  &:before, &:hover:before {
+    transform: rotate(45deg) translate(8px, 6px)
+  }
+
+  &:after, &:hover:after {
+    transform: translate(1px, -8px) rotate(-45deg);
+  }
+
+  &:hover {
+    &:before, &:after {
+      background-color: $white;
+    }
+  }
+
+  + .links {
+    visibility: visible;
+    pointer-events: all;
+    opacity: 1;
+    transform: translateX(0)
   }
 }
