@@ -44,6 +44,7 @@ class StarterSite extends Timber\Site {
 		add_filter( 'timber/twig', array( $this, 'add_to_twig' ) );
 		add_action( 'init', array( $this, 'register_post_types' ) );
 		add_action( 'init', array( $this, 'register_taxonomies' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 		parent::__construct();
 	}
 	/** This is where you can register custom post types. */
@@ -53,6 +54,10 @@ class StarterSite extends Timber\Site {
 	/** This is where you can register custom taxonomies. */
 	public function register_taxonomies() {
 
+	}
+
+	public function enqueue_scripts() {
+		wp_enqueue_script( 'base-js', get_template_directory_uri() . '/static/site.js', array( 'jquery', 'masonry' ), '1.12.4', true );
 	}
 
 	/** This is where you add some context
