@@ -62,6 +62,7 @@ class StarterSite extends Timber\Site {
 	public function add_to_context( $context ) {
 		$context['menu'] = new Timber\Menu();
 		$context['site'] = $this;
+		$context['site']->theme->images = $this->theme->link . "/static/images";
 		return $context;
 	}
 
