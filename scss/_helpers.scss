@@ -1,0 +1,17 @@
+@mixin reset-list {
+  padding-left: 0;
+  display: flex;
+  justify-content: space-between;
+
+  li { 
+    display: inline-block;
+  }
+}
+
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
