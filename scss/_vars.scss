@@ -1,0 +1,25 @@
+$primary: #0B23AD;
+$secondary: #041367;
+$white: #FEFEFE;
+
+$max-width: 1200px;
+$em-base: 16;
+
+// mixins for responsive
+@mixin mobile() {
+  @media only screen and (max-width: 766px) {
+    @content;
+  }
+}
+
+@mixin tablet() {
+  @media only screen and (min-width: 767px) {
+    @content;
+  }
+}
+
+@mixin desktop() {
+  @media only screen and (min-width: $max-width) {
+    @content;
+  }
+}
