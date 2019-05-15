@@ -19,16 +19,9 @@
 		</header>
 
 		<main id="content" role="main" class="main">
-			<div class="wrapper {{sidebar_class}}">
-				{% block content %}
-					Sorry, no content
-				{% endblock %}
-			</div>
-			{% if sidebar %}
-				<aside class="layout-sidebar">
-					{{sidebar}}
-				</aside>
-			{% endif %}
+			{% block content %}
+				Sorry, no content
+			{% endblock %}
 		</main>
 
 		{% block footer %}
