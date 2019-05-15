@@ -9,19 +9,16 @@
 	<body class="{{body_class}}" data-template="base.twig">
 		<header class="header" >
 			{% block header %}
-				<div class="wrapper">
-						<a class="logo-link" href="{{site.url}}" rel="home">
-							<img src="{{ site.theme.images }}/logo--textless--white.svg" alt="">
-						</a>
+					<a class="logo-link" href="{{site.url}}" rel="home">
+						{{ source("/static/images/logo--textless--white.svg" )}}
+					</a>
 					<nav id="nav-main" class="nav-main" role="navigation">
 						{% include "menu.twig" with {'menu': menu.get_items} %}
 					</nav><!-- #nav -->
-				</div>
 			{% endblock %}
 		</header>
 
-		<section id="content" role="main" class="content-wrapper">
-			{% if title %}<h1>{{title}}</h1>{% endif %}
+		<main id="content" role="main" class="main">
 			<div class="wrapper {{sidebar_class}}">
 				{% block content %}
 					Sorry, no content
@@ -32,7 +29,7 @@
 					{{sidebar}}
 				</aside>
 			{% endif %}
-		</section>
+		</main>
 
 		{% block footer %}
 			<footer id="footer">
