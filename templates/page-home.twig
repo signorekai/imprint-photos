@@ -7,12 +7,11 @@
       {% endfor %}
     <article class="post-type-{{post.post_type}}" id="{{post.post_type}}-{{post.ID}}">
       {{ post.content }}
-      <nav class="works">
+      <nav class="works-nav">
       {% for work in works %}
-        <a class="works__link" href="{{work.link}}" data-target="#overlay-{{work.ID}}" alt="{{work.custom['main_description']}}">{{work.post_title}}</a>
+        <a class="works-nav__link" href="{{work.link}}" data-target="#overlay-{{work.ID}}" alt="{{work.custom['main_description']}}">{{work.post_title}}</a>
       {% endfor %}
-
-      <!-- {{works|print_r }}-->
+      </nav>
     </ul>
     </article>
   </div>

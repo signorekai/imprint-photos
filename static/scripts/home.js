@@ -17,7 +17,7 @@
 // });
 
 ready(function() {
-  var $nav = f('a.works__link');
+  var $nav = f('a.works-nav__link');
 
   if ($nav) {
     $nav.on('mouseenter', function() {
