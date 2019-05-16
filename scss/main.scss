@@ -18,6 +18,12 @@ body, header, div, section, header, main, article, a {
   box-sizing: border-box;
 }
 
+body {
+  background: #e8e8e8;
+  margin-top: $min-margin-v;
+  margin-bottom: $min-margin-v;
+}
+
 ::selection {
   background-color: $secondary;
   color: $white;
@@ -88,7 +94,7 @@ nav.works {
 .wrapper--full {
   max-width: none;
   height: 100%;
-  margin: $min-margin-v $min-margin-h;
+  margin: 0 $min-margin-h;
 }
 
 .overlay {
@@ -110,7 +116,6 @@ nav.works {
 }
 
 @import "typography";
-@import "page";
-
+@import "components/article";
 @import "components/header";
 @import "posts/36";
