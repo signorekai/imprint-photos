@@ -8,5 +8,29 @@
 }
 
 .article__title {
+  background-color: $primary;
+  background-position: center center;
+  color: $white;
+  padding: 10px 20px;
+}
 
+.article__body-wrapper {
+  @extend .wrapper;
+  padding-top: $min-margin-v;
+
+
+  display: flex;
+}
+
+.article__sidebar {
+  width: 30%;
+
+  @include desktop {
+    position: sticky;
+  }
+}
+
+.article__body {
+  width: auto;
+  grid-column: 2 / 2;
 }

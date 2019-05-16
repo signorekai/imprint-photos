@@ -12,6 +12,7 @@ html, body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; 
   margin: 0; 
+  overflow-x: hidden;
 }
 
 body, header, div, section, header, main, article, a {
@@ -20,8 +21,7 @@ body, header, div, section, header, main, article, a {
 
 body {
   background: #e8e8e8;
-  margin-top: $min-margin-v;
-  margin-bottom: $min-margin-v;
+  margin: 0;
 }
 
 ::selection {
@@ -37,7 +37,7 @@ a {
 
 }
 
-nav.works {
+.works-nav {
   max-width: 200px;
   margin-top: 5vh;
 
@@ -51,38 +51,63 @@ nav.works {
       opacity: 0.7;
     }
   }
+}
 
-  .works__link {
-    color: $white;
-    display: flex;
-    align-items: center;
-    padding: 4px 10px;
-    margin-left: -10px;
-    max-width: 200px;
+.works-nav--inline {
+  position: relative !important;
+}
+  
+.works-nav__link {
+  color: $white;
+  display: flex;
+  align-items: center;
+  padding: 3px 10px;
+  margin-left: -10px;
+  max-width: 200px;
+  transition: all 0.2s $easing;
+
+  &:before {
+    content: "";
+    width: 0;
+    height: 0;
+    margin-right: 0;
+    background-color: $white;
     transition: all 0.2s $easing;
-
+  }
+  
+  &:hover {
+    opacity: 1;
     &:before {
-      content: "";
-      width: 0;
-      height: 0;
-      margin-right: 0;
-      background-color: $white;
-      transition: all 0.2s $easing;
+      width: 16px;
+      height: 3px;
+      margin-right: 10px;
+      transform: scale(1);
     }
-    
-    &:hover {
-      opacity: 1;
-      &:before {
-        width: 16px;
-        height: 3px;
-        margin-right: 10px;
-        transform: scale(1);
-      }
+  }
+}
 
-      & + overlay {
-        opacity: 1;
-      }
-    }
+.works-nav__link--blue {
+  color: $primary;
+  font-weight: normal;
+
+  &:before {
+    background-color: $primary;
+  }
+
+  &:hover:before {
+    width: 10px;
+    height: 2px;
+  }
+}
+
+.works-nav__link--current {
+  font-weight: bold;
+
+  &:before {
+      width: 16px !important;
+      height: 3px !important;
+      margin-right: 10px;
+      transform: scale(1);
   }
 }
 

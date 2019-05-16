@@ -1,7 +1,11 @@
-
 body.home {
   background-color: $primary;
   color: $white;
+  margin-top: $min-margin-v;
+
+  > header {
+    margin-top: 0;
+  }
 
   > main {
     h1 {
