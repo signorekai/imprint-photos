@@ -81,6 +81,15 @@
   z-index: 200;
   padding: 0 $min-margin-h;
   height: 51px; 
+  top: 10px;
+
+  @include tablet {
+    top: 15px;
+  }
+
+  @include desktop {
+    top: auto;
+  }
 }
 
 #header__svg {
