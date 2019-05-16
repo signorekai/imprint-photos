@@ -5,7 +5,24 @@
     <article class="article">
       <header class="article__header" style="background-image: url({{post.thumbnail.src}})">
         <h1 class="article__title">{{post.title}}</h1>
+        <!--{{post.meta('projects')|print_r}} -->
       </header>
+      <section class="article__body-wrapper">
+        <aside class="article__sidebar">
+          <nav class="works-nav works-nav--inline">
+          {% for work in works %}
+            <a class="works-nav__link works-nav__link--blue {% if work.id == post.id %}works-nav__link--current{% endif %}" href="{{work.link}}" data-target="#overlay-{{work.ID}}" alt="{{work.custom['main_description']}}">{{work.post_title}}</a>
+          {% endfor %}
+          </nav>
+        </aside>
+        <div class="article__body">
+          {% for project in post.meta('projects') %}
+            {% for photo in project.photos %}
+              <img src="{{photo.sizes.thumbnail}}" alt="">
+            {% endfor %}
+          {% endfor %}
+        </div>
+      </section>
     </article>
   </div><!-- /content-wrapper -->
 {% endblock %}
