@@ -92,22 +92,27 @@
   }
 }
 
-#header__svg {
+.header__svg {
   opacity: 0;
   transition: all 0.2s $easing;
   transform: translateY(-20px);
-
-  &.--show {
-    pointer-events: all;
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  #logo-svg {
-    fill: $white;
-  }
 }
+
+.header__svg-group {
+    fill: $white;
+}
+
+.header__svg--show {
+  pointer-events: all;
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.single-portfolio #header__svg, .page:not(.home) #header__svg {
+  @extend .header__svg--show;
+}
+
 
 .header__nav {
   display: flex;
