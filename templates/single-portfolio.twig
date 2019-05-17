@@ -12,7 +12,7 @@
           {% for work in works %}
             <a class="works-nav__link works-nav__link--blue {% if work.id == post.id %}works-nav__link--current{% endif %}" href="{{work.link}}" data-target="#overlay-{{work.ID}}" alt="{{work.custom['main_description']}}">{{work.post_title}}</a>
           {% endfor %}
-          <p class="portfolio__description">
+          <p class="portfolio__description portfolio__description--show">
             {{ post.meta('main_description') }}
           </p>
           </nav>
