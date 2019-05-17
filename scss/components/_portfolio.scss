@@ -28,11 +28,23 @@
 
 .portfolio__description {
   margin-top: 3rem;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.2s $easing;
+}
+
+.portfolio__description--show {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .portfolio__body-wrapper {
-  @extend .wrapper--full;
+  width: 100%;
+  padding-left: $min-margin-h;
+  padding-right: $min-margin-h;
   padding-top: $min-margin-v;
+  background-color: $grey;
+  position: relative;
 
   display: flex;
   align-items: flex-start;
