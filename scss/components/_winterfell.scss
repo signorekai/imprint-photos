@@ -9,6 +9,11 @@
   // right: 0;
   // bottom: 0;
 }
+.winterfell-lightbox-image-wrapper {
+  pointer-events: none;
+  z-index: 150;
+  position: relative;
+}
 
 .winterfell-lightbox-caption {
   position: absolute;
@@ -30,24 +35,25 @@
 .winterfell-gallery-button {
   z-index: 200;
   width: 40px;
-  height: 44px;
+  width: 50%;
+  height: 100%;
   padding: 10px;
   text-indent: inherit;
   transition: all 0.2s $easing;
+  opacity: 0.5;
 
   &:after {
     border-top: none;
   }
 
   &:hover {
-    opacity: 0.5;
+    opacity: 1;
   }
 }
 
 .winterfell-previous-button {
   left: 0;
   content: "";
-  background-color: $black;
 
   &:hover {
     transform: translate(-5px, -50%);
@@ -57,7 +63,6 @@
 .winterfell-next-button {
   right: 0;
   content: "";
-  background-color: $black;
 
   &:hover {
     transform: translate(5px, -50%);
@@ -92,6 +97,7 @@
   transition: all 0.2s $easing;
   right: 2.5%;
   top: 2.5%;
+  z-index: 210;
   &:before, &:after {
     width: 3px;
     height: 25px;
