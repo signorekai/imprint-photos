@@ -45,6 +45,12 @@ class StarterSite extends Timber\Site {
 		add_action( 'init', array( $this, 'register_post_types' ) );
 		add_action( 'init', array( $this, 'register_taxonomies' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+		
+		remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+		remove_action( 'wp_print_styles', 'print_emoji_styles' );
+		remove_action('wp_head', 'rest_output_link_wp_head', 10);
+		remove_action('wp_head', 'wp_oembed_add_discovery_links', 10);
+
 		parent::__construct();
 	}
 	/** This is where you can register custom post types. */
