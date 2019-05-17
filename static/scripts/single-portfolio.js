@@ -53,12 +53,16 @@ ready(function() {
 
   // logoObserver.observe(f('.portfolio__header'));
 
-  const parallax = rallax(f('.portfolio__header'), {
+  const headerParallax = rallax(f('.portfolio__header'), {
     speed: 0.5
   });
 
+  const footerParallax = rallax(f('.footer'), {
+    speed: 0.3
+  });
+
   let scrollY = window.scrollY;
-  parallax.when(function() {
+  headerParallax.when(function() {
     const $height = document.documentElement.clientHeight;
     if (Math.abs(window.scrollY - scrollY) > ($height/10)) {
       scrollY = window.scrollY;

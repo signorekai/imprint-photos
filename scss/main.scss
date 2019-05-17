@@ -139,6 +139,23 @@ a {
   }
 }
 
+main.main {
+  position: relative;
+  z-index: 150;
+  margin-bottom: 100vh;
+}
+
+.footer {
+  width: 100%;
+  height: 100vh;
+  background-color: $white;
+  color: $primary;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  z-index: 90;
+}
+
 @import "typography";
 @import "components/portfolio";
 @import "components/header";

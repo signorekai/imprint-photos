@@ -1,3 +1,7 @@
+.portfolio {
+  background-color: $grey;
+}
+
 .portfolio__header {
   background-size: cover;
   width: 100%;
@@ -40,9 +44,7 @@
 
 .portfolio__body-wrapper {
   width: 100%;
-  padding-left: $min-margin-h;
-  padding-right: calc(#{$min-margin-h} + 40px);
-  padding-top: $min-margin-v;
+  padding: $min-margin-v calc(#{$min-margin-h} + 40px) $min-margin-v $min-margin-h;
   background-color: $grey;
   position: relative;
 

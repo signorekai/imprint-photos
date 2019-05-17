@@ -1,13 +1,16 @@
 body.home {
   background-color: $primary;
   color: $white;
-  margin-top: $min-margin-v;
-
+  
   > header {
     margin-top: 0;
   }
-
+  
   > main {
+    padding-top: $min-margin-v;
+    margin-bottom: inherit;
+    position: static;
+
     h1 {
       transition: all 0.2s $easing;
     }
