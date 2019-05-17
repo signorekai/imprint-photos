@@ -6,46 +6,10 @@ function ready(fn) {
   }
 }
 
-Element.prototype.toggleClass = function(className) {
-  var el = this;
-  if (el.classList) {
-    el.classList.toggle(className);
-  } else {
-    var classes = el.className.split(' ');
-    var existingIndex = classes.indexOf(className);
-
-    if (existingIndex >= 0)
-      classes.splice(existingIndex, 1);
-    else
-      classes.push(className);
-
-    el.className = classes.join(' ');
-  }
-}
-
-Element.prototype.removeClass = function(className) {
-  var el = this;
-  if (el.classList)
-    el.classList.remove(className);
-  else
-    el.className = el.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
-}
-
-Element.prototype.addClass = function(className) {
-  var el = this;
-  if (el.classList)
-    el.classList.add(className);
-  else
-    el.className += ' ' + className;
-}
-
-Element.prototype.data = function(name) {
-  return this.getAttribute(`data-${name}`);
-}
-
 var f = (function(document, window, f) {
   var node = Node.prototype,
       nodeList = NodeList.prototype,
+      elem = Element.prototype,
       forEach = 'forEach',
       trigger = 'trigger',
       each = [][forEach],
@@ -53,6 +17,47 @@ var f = (function(document, window, f) {
       dummy = document.createElement('i');
 
   nodeList[forEach] = each;
+
+  elem.toggleClass = function(className) {
+    var el = this;
+    if (el.classList) {
+      el.classList.toggle(className);
+    } else {
+      var classes = el.className.split(' ');
+      var existingIndex = classes.indexOf(className);
+
+      if (existingIndex >= 0)
+        classes.splice(existingIndex, 1);
+      else
+        classes.push(className);
+
+      el.className = classes.join(' ');
+    }
+  }
+
+  elem.removeClass = function(className) {
+    var el = this;
+    if (el.classList)
+      el.classList.remove(className);
+    else
+      el.className = el.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+  }
+
+  elem.addClass = function(className) {
+    var el = this;
+    if (el.classList)
+      el.classList.add(className);
+    else
+      el.className += ' ' + className;
+  }
+
+  elem.data = function(name) {
+    return this.getAttribute(`data-${name}`);
+  }
+
+  elem[forEach] = function(fn) {
+    fn(this);
+  }
 
   window.on = node.on = function (event, fn) {
     this.addEventListener(event, fn, false);
