@@ -1,5 +1,5 @@
 ready(function() {
-  var msnry = new Masonry('.portfolio__masonry', {
+  const msnry = new Masonry('.portfolio__masonry', {
     itemSelector: '.portfolio__masonry-item',
     // columnWidth: 260,
     gutter: 10,

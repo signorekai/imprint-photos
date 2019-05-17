@@ -6,8 +6,8 @@ function ready(fn) {
   }
 }
 
-var f = (function(document, window, f) {
-  var node = Node.prototype,
+const f = (function(document, window, f) {
+  const node = Node.prototype,
       nodeList = NodeList.prototype,
       elem = Element.prototype,
       forEach = 'forEach',
@@ -19,12 +19,12 @@ var f = (function(document, window, f) {
   nodeList[forEach] = each;
 
   elem.toggleClass = function(className) {
-    var el = this;
+    const el = this;
     if (el.classList) {
       el.classList.toggle(className);
     } else {
-      var classes = el.className.split(' ');
-      var existingIndex = classes.indexOf(className);
+      const classes = el.className.split(' ');
+      const existingIndex = classes.indexOf(className);
 
       if (existingIndex >= 0)
         classes.splice(existingIndex, 1);
@@ -36,7 +36,7 @@ var f = (function(document, window, f) {
   }
 
   elem.removeClass = function(className) {
-    var el = this;
+    const el = this;
     if (el.classList)
       el.classList.remove(className);
     else
@@ -44,11 +44,19 @@ var f = (function(document, window, f) {
   }
 
   elem.addClass = function(className) {
-    var el = this;
+    const el = this;
     if (el.classList)
       el.classList.add(className);
     else
       el.className += ' ' + className;
+  }
+
+  elem.attr = function(attr, val) {
+    if (!!val === false) {
+      return this.getAttribute(attr);
+    } else {
+      this.setAttribute(attr, val);
+    }
   }
 
   elem.data = function(name) {
@@ -76,7 +84,7 @@ var f = (function(document, window, f) {
   window[trigger] = node[trigger] = function (type, data) {
     // construct an HTML event. This could have
     // been a real custom event
-    var event = document.createEvent('HTMLEvents');
+    const event = document.createEvent('HTMLEvents');
     event.initEvent(type, true, true);
     event.data = data || {};
     event.eventName = type;
@@ -93,11 +101,13 @@ var f = (function(document, window, f) {
   };
 
   f = function (fn) {
-    var r = document.querySelectorAll(fn),
+    $doc = this === window ? document : this;
+    const r = $doc.querySelectorAll(fn),
             length = r.length;
     return length == 1 ? r[0] : r;
   };
 
+  elem.f = f;
   return f;
 
 })(document, this);
