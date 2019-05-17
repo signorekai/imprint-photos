@@ -60,13 +60,15 @@ ready(function() {
   let scrollY = window.scrollY;
   parallax.when(function() {
     const $height = document.documentElement.clientHeight;
-    if (Math.abs(window.scrollY - scrollY) > ($height/15)) {
+    if (Math.abs(window.scrollY - scrollY) > ($height/10)) {
       scrollY = window.scrollY;
       return true;
     }
     return false;
   }, function(el) {
-    const $percentage = 1 - ((window.scrollY / document.documentElement.clientHeight) * 1.2);
-    f('.portfolio__title').style.opacity = $percentage;
+    const $percentage = 1 - ((window.scrollY / document.documentElement.clientHeight) * 1.1);
+    // f('.portfolio__title').style.opacity = $percentage;
+    f('.portfolio__title').style.transform = `translateY(${window.scrollY / document.documentElement.clientHeight * 100}%)`
+    f('.portfolio__header').style.opacity = $percentage;
   });
 });
