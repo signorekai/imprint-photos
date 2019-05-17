@@ -82,6 +82,7 @@
   padding: 0 $min-margin-h;
   height: 51px; 
   top: 10px;
+  pointer-events: none;
 
   @include tablet {
     top: 15px;
@@ -112,6 +113,7 @@
 .header__nav {
   display: flex;
   align-items: center;
+  pointer-events: all;
 }
 
 .header__nav-icon {
