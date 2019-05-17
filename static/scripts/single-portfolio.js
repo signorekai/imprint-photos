@@ -52,4 +52,21 @@ ready(function() {
   // }, { threshold: [0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1], rootMargin: '20px', root: null });
 
   // logoObserver.observe(f('.portfolio__header'));
+
+  const parallax = rallax(f('.portfolio__header'), {
+    speed: 0.5
+  });
+
+  let scrollY = window.scrollY;
+  parallax.when(function() {
+    const $height = document.documentElement.clientHeight;
+    if (Math.abs(window.scrollY - scrollY) > ($height/15)) {
+      scrollY = window.scrollY;
+      return true;
+    }
+    return false;
+  }, function(el) {
+    const $percentage = 1 - ((window.scrollY / document.documentElement.clientHeight) * 1.2);
+    f('.portfolio__title').style.opacity = $percentage;
+  });
 });
