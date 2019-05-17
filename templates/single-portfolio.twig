@@ -5,7 +5,6 @@
     <article class="portfolio">
       <header class="portfolio__header" style="background-image: url({{post.thumbnail.src}})">
         <h1 class="portfolio__title">{{post.title}}</h1>
-        <!--{{post.meta('projects')|print_r}} -->
       </header>
       <section class="portfolio__body-wrapper">
         <aside class="portfolio__sidebar">
@@ -23,7 +22,12 @@
             {% for project in post.meta('projects') %}
               {% for photo in project.photos %}
                 <a data-lightbox="{{post.slug}}" href="{{ photo.sizes.large }}" class="portfolio__masonry-item">
-                  <img src="{{photo.sizes.thumbnail}}" alt="{{ project.description }}">
+                  <picture class="portfolio__masonry-pic" style="padding-top: {{ (photo.sizes['thumbnail-height'] / photo.sizes['thumbnail-width']) * 100 }}%">
+                    <img class="portfolio__masonry-img"
+                      src="{{photo.sizes.thumbnail|resize(10)}}"
+                      data-srcset="{{photo.sizes.thumbnail}} 1x, {{photo.sizes.medium}} 2x"
+                      alt="{{ project.description }}">
+                  </picture>
                 </a>
               {% endfor %}
             {% endfor %}

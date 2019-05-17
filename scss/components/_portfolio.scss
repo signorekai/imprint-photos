@@ -8,10 +8,22 @@
 }
 
 .portfolio__title {
-  background-color: $primary;
+  // background-color: $primary;
   background-position: center center;
   color: $white;
+  font-weight: bold; 
+  font-size: 3rem;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 10px rgba(0,0,0,0.1);
   padding: 10px 20px;
+
+  @include tablet {
+    font-size: 5rem;
+  }
+
+  @include desktop {
+    font-size: 5rem;
+  }
 }
 
 .portfolio__description {
@@ -80,11 +92,26 @@
       opacity: 0.6;
     }
   }
+}
 
-  img {
-    width: 100%;
-    height: auto;
-    transition: all 0.2s $easing;
+.portfolio__masonry-img {
+  width: 100%;
+  transition: all 0.2s $easing;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.01;
+}
 
-  }
+.portfolio__masonry-img--show {
+  opacity: 1;
+}
+
+.portfolio__masonry-pic {
+  display: block;
+  position: relative;
+  height: 0;
+  width: 100%;
+  padding-top: 100%;
+  background: #f0f0f0;
 }
