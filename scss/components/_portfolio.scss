@@ -41,7 +41,7 @@
 .portfolio__body-wrapper {
   width: 100%;
   padding-left: $min-margin-h;
-  padding-right: $min-margin-h;
+  padding-right: calc(#{$min-margin-h} + 40px);
   padding-top: $min-margin-v;
   background-color: $grey;
   position: relative;
