@@ -1,0 +1,109 @@
+.winterfell-lightbox {
+  background-color: $black;
+  z-index: 200;
+}
+
+.winterfell-lightbox-inner {
+  // top: 0;
+  // left: 0;
+  // right: 0;
+  // bottom: 0;
+}
+
+.winterfell-lightbox-caption {
+  position: absolute;
+  bottom: 0;
+  font-size: 0.95rem;
+  font-weight: 300;
+  line-height: 1.05rem;
+  opacity: 0;
+  transform: translateY(-20px);
+  overflow: visible;
+  transition: all 0.2s $easing;
+}
+
+.winterfell-lightbox-caption--show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.winterfell-gallery-button {
+  z-index: 200;
+  width: 40px;
+  height: 44px;
+  padding: 10px;
+  text-indent: inherit;
+  transition: all 0.2s $easing;
+
+  &:after {
+    border-top: none;
+  }
+
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+.winterfell-previous-button {
+  left: 0;
+  content: "";
+  background-color: $black;
+
+  &:hover {
+    transform: translate(-5px, -50%);
+  }
+}
+
+.winterfell-next-button {
+  right: 0;
+  content: "";
+  background-color: $black;
+
+  &:hover {
+    transform: translate(5px, -50%);
+  }
+}
+
+// use :before for blank slate
+.winterfell-previous-button:before, .winterfell-next-button:before {
+  position: absolute;
+  color: $white;
+  transform: none;
+}
+
+// reset default buttons
+.winterfell-previous-button:after, .winterfell-next-button:after {
+  display: none;
+}
+
+.winterfell-previous-button:before {
+  border-left: none;
+  content: "←";
+  left: 10px;
+}
+
+.winterfell-next-button:before {
+  border-right: none;
+  content: "→";
+  right: 10px;
+}
+
+.winterfell-close-button {
+  transition: all 0.2s $easing;
+  right: 2.5%;
+  top: 2.5%;
+  &:before, &:after {
+    width: 3px;
+    height: 25px;
+
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.winterfell-img {
+  max-width: 100% !important;
+  max-height: 100% !important;
+}
