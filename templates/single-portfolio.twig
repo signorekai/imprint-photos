@@ -2,24 +2,27 @@
 
 {% block content %}
 	<div class="content-wrapper" data-template="single-portfolio.twig">
-    <article class="article">
-      <header class="article__header" style="background-image: url({{post.thumbnail.src}})">
-        <h1 class="article__title">{{post.title}}</h1>
+    <article class="portfolio">
+      <header class="portfolio__header" style="background-image: url({{post.thumbnail.src}})">
+        <h1 class="portfolio__title">{{post.title}}</h1>
         <!--{{post.meta('projects')|print_r}} -->
       </header>
-      <section class="article__body-wrapper">
-        <aside class="article__sidebar">
+      <section class="portfolio__body-wrapper">
+        <aside class="portfolio__sidebar">
           <nav class="works-nav works-nav--inline">
           {% for work in works %}
             <a class="works-nav__link works-nav__link--blue {% if work.id == post.id %}works-nav__link--current{% endif %}" href="{{work.link}}" data-target="#overlay-{{work.ID}}" alt="{{work.custom['main_description']}}">{{work.post_title}}</a>
           {% endfor %}
+          <p class="portfolio__description">
+            {{ post.meta('main_description') }}
+          </p>
           </nav>
         </aside>
-        <div class="article__body">
-          <div class="article__masonry">
+        <div class="portfolio__body">
+          <div class="portfolio__masonry">
             {% for project in post.meta('projects') %}
               {% for photo in project.photos %}
-                <a data-lightbox="{{post.slug}}" href="{{ photo.sizes.large }}" class="article__masonry-item">
+                <a data-lightbox="{{post.slug}}" href="{{ photo.sizes.large }}" class="portfolio__masonry-item">
                   <img src="{{photo.sizes.thumbnail}}" alt="{{ project.description }}">
                 </a>
               {% endfor %}
