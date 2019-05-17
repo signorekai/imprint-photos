@@ -1,11 +1,11 @@
 ready(function() {
-  var msnry = new Masonry('.article__masonry', {
-    itemSelector: '.article__masonry-item',
+  var msnry = new Masonry('.portfolio__masonry', {
+    itemSelector: '.portfolio__masonry-item',
     // columnWidth: 260,
     gutter: 10,
     percentPosition: true,
   })
-  imagesLoaded( f('.article__masonry')).on('progress', function() {
+  imagesLoaded( f('.portfolio__masonry')).on('progress', function() {
     msnry.layout();
   });
 
