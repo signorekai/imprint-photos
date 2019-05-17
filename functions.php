@@ -79,7 +79,9 @@ class StarterSite extends Timber\Site {
 		if ( is_singular('portfolio') ) {
 			// wp_enqueue_script( 'masonry', get_template_directory_uri() . '/static/scripts/site.js', array('f'), '1.0.0', true );
 			wp_enqueue_script('masonry');
-			wp_enqueue_script( 'single-portfolio', get_template_directory_uri() . '/static/scripts/single-portfolio.js', array('f', 'lightbox'), '1.0.0', true );
+
+			$dep = array('f', 'lightbox', 'rallax');
+			wp_enqueue_script( 'single-portfolio', get_template_directory_uri() . '/static/scripts/single-portfolio.js', $dep, '1.0.0', true );
 			wp_enqueue_style('lightbox');
 		}
 	}
