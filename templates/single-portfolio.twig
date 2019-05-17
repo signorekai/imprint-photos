@@ -16,11 +16,15 @@
           </nav>
         </aside>
         <div class="article__body">
-          {% for project in post.meta('projects') %}
-            {% for photo in project.photos %}
-              <img src="{{photo.sizes.thumbnail}}" alt="">
+          <div class="article__masonry">
+            {% for project in post.meta('projects') %}
+              {% for photo in project.photos %}
+                <a data-lightbox="{{post.slug}}" href="{{ photo.sizes.large }}" class="article__masonry-item">
+                  <img src="{{photo.sizes.thumbnail}}" alt="{{ project.description }}">
+                </a>
+              {% endfor %}
             {% endfor %}
-          {% endfor %}
+          </div>
         </div>
       </section>
     </article>
