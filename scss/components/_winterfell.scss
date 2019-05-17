@@ -98,6 +98,12 @@
   right: 2.5%;
   top: 2.5%;
   z-index: 210;
+  opacity: 1;
+
+  @include desktop {
+    opacity: 0.5;
+  }
+
   &:before, &:after {
     width: 3px;
     height: 25px;
