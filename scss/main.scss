@@ -37,9 +37,6 @@ a {
 }
 
 .works-nav {
-  max-width: 200px;
-  margin-top: 5vh;
-
   @include tablet {
     position: absolute;
     bottom: $min-margin-v;
@@ -49,6 +46,12 @@ a {
     .works__link {
       opacity: 0.7;
     }
+  }
+  
+  @include desktop {
+    max-width: 200px;
+    margin-top: 5vh;
+    
   }
 }
 
@@ -60,6 +63,28 @@ a {
   position: relative !important;
   margin: 0 $min-margin-h;
   bottom: auto;
+  z-index: 100;
+}
+
+$bulletWidth: 10px;
+$bulletHeight: 2px;
+$bulletMargin: 10px;
+
+.works-nav--with-bullet {
+  .works-nav__link {
+    &:before {
+      width: $bulletWidth !important;
+      height: $bulletHeight !important;
+      margin-right: $bulletMargin;
+    }
+    &:hover {
+      color: $grey;
+
+      &:before {
+        background-color: $grey;
+      }
+    }
+  }
 }
   
 .works-nav__link {
@@ -83,9 +108,9 @@ a {
   &:hover {
     opacity: 1;
     &:before {
-      width: 10px;
-      height: 2px;
-      margin-right: 10px;
+      width: $bulletWidth;
+      height: $bulletHeight;
+      margin-right: $bulletMargin;
       transform: scale(1);
     }
   }
@@ -100,8 +125,8 @@ a {
   }
 
   &:hover:before {
-    width: 10px;
-    height: 2px;
+    width: $bulletWidth;
+    height: $bulletHeight;
   }
 }
 
@@ -111,7 +136,7 @@ a {
   &:before {
       width: 16px !important;
       height: 3px !important;
-      margin-right: 10px;
+      margin-right: $bulletMargin;
       transform: scale(1);
   }
 }

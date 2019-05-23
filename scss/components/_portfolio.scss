@@ -31,10 +31,16 @@
 }
 
 .portfolio__description {
-  margin-top: 3rem;
+  margin-top: 0rem;
   transform: translateY(20px);
   opacity: 0;
   transition: all 0.2s $easing;
+  width: 100%;
+  text-align: center;
+
+  @include desktop {
+    text-align: left;
+  }
 }
 
 .portfolio__description--show {
@@ -44,21 +50,22 @@
 
 .portfolio__body-wrapper {
   width: 100%;
-  padding: $min-margin-v calc(#{$min-margin-h} + 40px) $min-margin-v $min-margin-h;
+  padding: $min-margin-v $min-margin-h;
   background-color: $grey;
   position: relative;
-
+  
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-
+  
   @include desktop {
+    padding: $min-margin-v calc(#{$min-margin-h} + 40px) $min-margin-v $min-margin-h;
     flex-direction: row;
   }
 }
 
 .portfolio__sidebar {
-  order: 2;
+  order: 1;
 
   @include desktop {
     order: 1;
@@ -68,10 +75,18 @@
     top: 150px;
     min-width: 170px;
   }
+
+  .works-nav {
+    display: none;
+
+    @include desktop {
+      display: block;
+    }
+  }
 }
 
 .portfolio__body {
-  order: 1;
+  order: 2;
   width: 100%;
   text-align: center;
 

@@ -12,10 +12,10 @@
           {% for work in works %}
             <a class="works-nav__link works-nav__link--blue {% if work.id == post.id %}works-nav__link--current{% endif %}" href="{{work.link}}" data-target="#overlay-{{work.ID}}" alt="{{work.custom['main_description']}}">{{work.post_title}}</a>
           {% endfor %}
+          </nav>
           <p class="portfolio__description portfolio__description--show">
             {{ post.meta('main_description') }}
           </p>
-          </nav>
         </aside>
         <div class="portfolio__body">
           <div class="portfolio__masonry">
@@ -45,7 +45,7 @@
     <h2 class="footer__text">
       {{ footer_text }}
     </h2>
-    <nav class="works-nav works-nav--inline-block">
+    <nav class="works-nav works-nav--inline-block works-nav--with-bullet">
       {% for work in works %}
         <a class="works-nav__link" href="{{work.link}}" data-target="#overlay-{{work.ID}}" alt="{{work.custom['main_description']}}">{{work.post_title}}</a>
       {% endfor %}
