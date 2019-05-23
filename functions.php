@@ -8,6 +8,8 @@
  * @since   Timber 0.1
  */
 
+require get_template_directory() . '/inc/customizer.php';
+
 if ( ! class_exists( 'Timber' ) ) {
 	add_action( 'admin_notices', function() {
 		echo '<div class="error"><p>Timber not activated. Make sure you activate the plugin in <a href="' . esc_url( admin_url( 'plugins.php#timber' ) ) . '">' . esc_url( admin_url( 'plugins.php' ) ) . '</a></p></div>';
@@ -94,6 +96,9 @@ class StarterSite extends Timber\Site {
 		$context['menu'] = new Timber\Menu();
 		$context['site'] = $this;
 		$context['site']->theme->images = $this->theme->link . "/static/images";
+
+		$theme = new Timber\Theme();
+		$context['footer_text'] = $theme->theme_mod('footer_text');
 		return $context;
 	}
 
@@ -147,6 +152,12 @@ class StarterSite extends Timber\Site {
 		// );
 
 		add_theme_support( 'menus' );
+
+		register_nav_menus(
+			array(
+				"menu-1" => __( 'Primary', 'winterfell' )
+			)
+		);
 	}
 
 	/** This Would return 'foo bar!'.
