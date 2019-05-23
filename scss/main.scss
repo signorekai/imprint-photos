@@ -55,6 +55,12 @@ a {
 .works-nav--inline {
   position: relative !important;
 }
+
+.works-nav--inline-block {
+  position: relative !important;
+  margin: 0 $min-margin-h;
+  bottom: auto;
+}
   
 .works-nav__link {
   color: $white;
@@ -77,8 +83,8 @@ a {
   &:hover {
     opacity: 1;
     &:before {
-      width: 16px;
-      height: 3px;
+      width: 10px;
+      height: 2px;
       margin-right: 10px;
       transform: scale(1);
     }
@@ -143,17 +149,6 @@ main.main {
   position: relative;
   z-index: 150;
   margin-bottom: 100vh;
-}
-
-.footer {
-  width: 100%;
-  height: 100vh;
-  background-color: $white;
-  color: $primary;
-  overflow: hidden;
-  position: fixed;
-  bottom: 0;
-  z-index: 90;
 }
 
 @import "typography";
