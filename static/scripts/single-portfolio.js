@@ -57,9 +57,9 @@ ready(function() {
     speed: 0.5
   });
 
-  const footerParallax = rallax(f('.footer'), {
-    speed: 0.3
-  });
+  // const footerParallax = rallax(f('.footer'), {
+  //   speed: 0.3
+  // });
 
   let scrollY = window.scrollY;
   headerParallax.when(function() {
