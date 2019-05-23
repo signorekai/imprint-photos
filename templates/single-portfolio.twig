@@ -40,8 +40,9 @@
 
 {% block footer %}
   {# <footer class="footer" style="background-image: url({{post.thumbnail.src}})"> #}
-  <footer class="footer" style="background-image: url({{post.thumbnail.src}})">
-    <h2>
+  <footer class="footer">
+    <div class="footer__overlay" style="background-image: url({{ footer_bg }})"></div>
+    <h2 class="footer__text">
       {{ footer_text }}
     </h2>
   </footer>

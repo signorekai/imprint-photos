@@ -99,6 +99,7 @@ class StarterSite extends Timber\Site {
 
 		$theme = new Timber\Theme();
 		$context['footer_text'] = $theme->theme_mod('footer_text');
+		$context['footer_bg'] = $theme->theme_mod('footer_bg');
 		return $context;
 	}
 
