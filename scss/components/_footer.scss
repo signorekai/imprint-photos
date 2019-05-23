@@ -1,0 +1,48 @@
+.footer {
+  width: 100%;
+  height: 100vh;
+  background-color: $white;
+  color: $primary;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  z-index: 90;
+  display: flex;
+  // align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  background-color: $black;
+}
+
+.footer__overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 80;
+  background-size: cover;
+  background-position: center center;
+  opacity: 0.8;
+}
+
+.footer__text {
+  padding: 0 $min-margin-h;
+  z-index: 100;
+
+  @include desktop {
+    max-width: $max-width;
+  }
+
+  a {
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+    font-weight: bold;
+    background-color: $primary;
+    padding: 0px 5px;
+    margin: 0;
+    color: $white;
+  }
+
+}
