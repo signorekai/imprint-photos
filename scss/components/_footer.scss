@@ -6,6 +6,13 @@
   overflow: hidden;
 }
 
+.footer--active {
+  .works-nav, .footer__text {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+}
+
 .footer__wrapper {
   position: fixed;
   width: 100%;
@@ -17,6 +24,12 @@
   justify-content: center;
   flex-direction: column;
   background-color: $black;
+
+  .works-nav {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.4s $easing 0.2s;
+  }
 
   .works-nav__link:hover:before {
     width: 16px !important;
@@ -38,6 +51,9 @@
 .footer__text {
   padding: 0 $min-margin-h;
   z-index: 100;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.4s $easing;
 
   @include desktop {
     max-width: $max-width;
