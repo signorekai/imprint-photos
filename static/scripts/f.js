@@ -67,6 +67,48 @@ const f = (function(document, window, f) {
     fn(this);
   }
 
+  elem.daybreak = function(opts) {
+    const original = this;
+    const type = typeof opts;
+    if (opts !== null && (type === 'object' || type === 'function')) {
+      opts = {};
+    }
+    opts.sectionSelector = !!opts.sectionSelector ? opts.sectionSelector : '[data-daybreak]';
+
+    const observers = [];
+    const observerTargets = [];
+    f(opts.sectionSelector).forEach(function(el, id) {
+      if (el.css('position') === 'static') {
+        el.css('position', 'relative');
+      }
+
+      observerTargets[id] = document.createElement("div");
+      observerTargets[id].css('position', 'absolute');
+      observerTargets[id].css('width', '100%');
+      observerTargets[id].css('height', '100%');
+      observerTargets[id].css('top', '0');
+      observerTargets[id].css('left', '0');
+      observerTargets[id].css('pointer-events', 'none');
+      observerTargets[id].attr('class', 'daybreak-observer');
+      el.appendChild(observerTargets[id]);
+
+      observers[id] = new IntersectionObserver(function(e) {
+        const elem = e[0];
+        const className = el.data('daybreak');
+        const ratio = 1 - ((original.getBoundingClientRect().y + (original.getBoundingClientRect().height*2)) / document.documentElement.clientHeight);
+        if (elem.isIntersecting && elem.intersectionRatio > ratio) {
+          original.addClass(className);
+          console.log('adding');
+        } else {
+          original.removeClass(className);
+          console.log('removing...');
+        }
+      }, { threshold: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1] });
+      observers[id].observe(observerTargets[id]);
+    });
+
+  }
+
   window.on = node.on = function (event, fn) {
     this.addEventListener(event, fn, false);
 
