@@ -2,13 +2,32 @@
 
 {% block content %}
 	<div class="content-wrapper" data-template="page.twig">
-		<article class="post-type-{{post.post_type}}" id="post-{{post.ID}}">
-			<section class="article-content">
-				<h1 class="article-h1">{{post.title}}</h1>
-				<div class="article-body">
-					{{post.content}}
-				</div>
-			</section>
+		<article class="post-type-{{post.post_type}} portfolio single" id="post-{{post.ID}}">
+		      <header class="portfolio__header" {% if post.thumbnail.src %}style="background-image: url({{post.thumbnail.src}})" data-bg="{{post.thumbnail.src}}"{% endif %}>
+        <h1 class="portfolio__title">{{post.title}}</h1>
+      </header>
+      <section class="portfolio__body-wrapper">
+        <div class="portfolio__body">
+					{{ post.content }}
+        </div>
+      </section>
 		</article>
 	</div><!-- /content-wrapper -->
+{% endblock %}
+
+{% block footer %}
+  {# <footer class="footer" style="background-image: url({{post.thumbnail.src}})"> #}
+  <footer class="footer" data-daybreak="header--white">
+    <div class="footer__wrapper">
+      <div class="footer__overlay" style="background-image: url({{ footer_bg }})"></div>
+      <h2 class="footer__text">
+        {{ footer_text }}
+      </h2>
+      <nav class="works-nav works-nav--inline-block works-nav--with-bullet">
+        {% for work in works %}
+          <a class="works-nav__link" href="{{work.link}}" data-target="#overlay-{{work.ID}}" alt="{{work.custom['main_description']}}">{{work.post_title}}</a>
+        {% endfor %}
+      </nav>
+    </div>
+  </footer>
 {% endblock %}
