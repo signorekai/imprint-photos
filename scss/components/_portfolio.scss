@@ -9,6 +9,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  z-index: 70;
 }
 
 .portfolio__title {
@@ -53,6 +55,7 @@
   padding: $min-margin-v $min-margin-h;
   background-color: $grey;
   position: relative;
+  z-index: 200;
   
   display: flex;
   align-items: flex-start;
