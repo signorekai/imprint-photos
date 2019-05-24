@@ -78,10 +78,13 @@ const f = (function(document, window, f) {
   elem.daybreak = function(opts) {
     const original = this;
     const type = typeof opts;
-    if (opts !== null && (type === 'object' || type === 'function')) {
+    if (opts === null || (type !== 'object' && type !== 'function')) {
       opts = {};
     }
+
     opts.sectionSelector = !!opts.sectionSelector ? opts.sectionSelector : '[data-daybreak]';
+    opts.onEnter = typeof opts.onEnter === 'function' ? opts.onEnter : function() {};
+    opts.onLeave = typeof opts.onLeave === 'function' ? opts.onLeave : function() {};
 
     const observers = [];
     const observerTargets = [];
@@ -104,12 +107,16 @@ const f = (function(document, window, f) {
         const elem = e[0];
         const className = el.data('daybreak');
         const ratio = 1 - ((original.getBoundingClientRect().y + (original.getBoundingClientRect().height*2)) / document.documentElement.clientHeight);
+        console.log(elem);
+        console.log(elem.isIntersecting);
         if (elem.isIntersecting && elem.intersectionRatio > ratio) {
           original.addClass(className);
-          console.log('adding');
+          opts.onEnter(el, original);
         } else {
           original.removeClass(className);
-          console.log('removing...');
+          if (Math.abs( elem.intersectionRatio - ratio ) < 0.1) {
+            opts.onLeave(el, original);
+          }
         }
       }, { threshold: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1] });
       observers[id].observe(observerTargets[id]);
