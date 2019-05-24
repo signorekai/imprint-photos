@@ -48,18 +48,11 @@ ready(function() {
     masonryObserver.observe(el);
   });
 
-  // const logoObserver = new IntersectionObserver(function(entries, root) {
-  // }, { threshold: [0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1], rootMargin: '20px', root: null });
-
-  // logoObserver.observe(f('.portfolio__header'));
-
   const headerParallax = rallax(f('.portfolio__header'), {
-    speed: 0.5
+    speed: 0.4
   });
 
-  // const footerParallax = rallax(f('.footer'), {
-  //   speed: 0.3
-  // });
+  f('header.header').daybreak({});
 
   let scrollY = window.scrollY;
   headerParallax.when(function() {
@@ -71,7 +64,6 @@ ready(function() {
     return false;
   }, function(el) {
     const $percentage = 1 - ((window.scrollY / document.documentElement.clientHeight) * 1.1);
-    // f('.portfolio__title').style.opacity = $percentage;
     f('.portfolio__title').style.transform = `translateY(${window.scrollY / document.documentElement.clientHeight * 100}%)`
     f('.portfolio__header').style.opacity = $percentage;
   });
