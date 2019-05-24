@@ -1,0 +1,17 @@
+.single:not(.single-portfolio) {
+  .portfolio__header:not([data-bg]) {
+    height: 50vh;
+  }
+
+  .portfolio__header[data-bg] {
+    background-image: attr(data-bg url);
+  }
+
+  .portfolio__body {
+    text-align: left;
+    width: 100%;
+    min-height: 60vh;
+    max-width: $max-width;
+    margin: 0 auto;
+  }
+}
