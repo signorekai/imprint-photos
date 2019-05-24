@@ -17,6 +17,10 @@
   justify-content: center;
   flex-direction: column;
   background-color: $black;
+
+  .works-nav__link:hover:before {
+    width: 16px !important;
+  }
 }
 
 .footer__overlay {
