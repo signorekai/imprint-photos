@@ -7,4 +7,9 @@ ready(function() {
       el.removeClass('footer--active');
     }
   });
+
+  const headerParallax = rallax(f('.portfolio__header'), {
+    speed: 0.4
+  });
+
 });
