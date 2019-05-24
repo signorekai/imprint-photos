@@ -35,6 +35,14 @@ const f = (function(document, window, f) {
     }
   }
 
+  elem.css = function(attr, val) {
+    if (!!val === false) {
+      return getComputedStyle(this)[attr];
+    } else {
+      this.style[attr] = val;
+    }
+  }
+
   elem.removeClass = function(className) {
     const el = this;
     if (el.classList)
