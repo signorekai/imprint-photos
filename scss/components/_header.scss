@@ -78,6 +78,7 @@
   position: fixed;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   z-index: 200;
   padding: 0 $min-margin-h;
   height: 51px; 
@@ -116,6 +117,7 @@
 
 .header__svg-group {
     fill: $white;
+    transition: all 0.2s $easing;
 }
 
 .header__nav {
@@ -199,6 +201,21 @@
   }
 }
 
+.header--white {
+  .header__svg-group {
+    fill: $white !important;
+  }
+
+  .header__nav-icon {
+    &:before, &:after {
+      background-color: $white !important;
+    }
+  }
+
+  .header__nav-icon {
+    @extend .header__nav-icon--active;
+  }
+}
 
 
 /**
