@@ -2,7 +2,7 @@
 
 {% block content %}
 	<div class="content-wrapper" data-template="single-portfolio.twig">
-    <article class="portfolio">
+    <article class="post-type-{{post.post_type}} portfolio">
       <header class="portfolio__header" style="background-image: url({{post.thumbnail.src}})">
         <h1 class="portfolio__title">{{post.title}}</h1>
       </header>
