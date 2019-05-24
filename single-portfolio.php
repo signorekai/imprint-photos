@@ -12,14 +12,6 @@
 $context = Timber::context();
 $timber_post = Timber::query_post();
 $context['post'] = $timber_post;
-$query = array(
-  'orderby' => 'menu_order',
-  'order' => 'ASC',
-  'post_status' => 'publish',
-  'post_type' => 'portfolio',
-  'posts_per_page' => 50
-);
-$context['works'] = new Timber\PostQuery( $query );
 
 if ( post_password_required( $timber_post->ID ) ) {
 	Timber::render( 'single-password.twig', $context );

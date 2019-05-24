@@ -100,6 +100,15 @@ class StarterSite extends Timber\Site {
 		$theme = new Timber\Theme();
 		$context['footer_text'] = $theme->theme_mod('footer_text');
 		$context['footer_bg'] = $theme->theme_mod('footer_bg');
+
+		$query = array(
+			'orderby' => 'menu_order',
+			'order' => 'ASC',
+			'post_status' => 'publish',
+			'post_type' => 'portfolio',
+			'posts_per_page' => 50
+		);
+		$context['works'] = new Timber\PostQuery( $query );
 		return $context;
 	}
 
