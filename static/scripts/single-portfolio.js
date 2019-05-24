@@ -52,7 +52,14 @@ ready(function() {
     speed: 0.4
   });
 
-  f('header.header').daybreak({});
+  f('header.header').daybreak({
+    onEnter: function(el) {
+      el.addClass('footer--active');
+    },
+    onLeave: function(el) {
+      el.removeClass('footer--active');
+    }
+  });
 
   let scrollY = window.scrollY;
   headerParallax.when(function() {
