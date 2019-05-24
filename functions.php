@@ -86,6 +86,11 @@ class StarterSite extends Timber\Site {
 			wp_enqueue_script( 'single-portfolio', get_template_directory_uri() . '/static/scripts/single-portfolio.js', $dep, '1.0.0', true );
 			wp_enqueue_style('lightbox');
 		}
+
+		if ( is_page() ) {
+			$dep = array('f', 'rallax');
+			wp_enqueue_script( 'page', get_template_directory_uri() . '/static/scripts/single-page.js', $dep, '1.0.0', true );
+		}
 	}
 
 	/** This is where you add some context
