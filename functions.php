@@ -173,6 +173,8 @@ class StarterSite extends Timber\Site {
 				"menu-1" => __( 'Primary', 'winterfell' )
 			)
 		);
+
+		add_image_size('1080p', 1920, 1080);
 	}
 
 	/** This Would return 'foo bar!'.
