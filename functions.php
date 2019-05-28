@@ -174,7 +174,7 @@ class StarterSite extends Timber\Site {
 			)
 		);
 
-		add_image_size('1080p', 1920, 1080);
+		add_image_size('full', 1920, 1080);
 	}
 
 	/** This Would return 'foo bar!'.
