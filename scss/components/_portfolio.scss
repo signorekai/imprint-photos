@@ -19,13 +19,13 @@
   background-position: center center;
   color: $white;
   font-weight: bold; 
-  font-size: 3rem;
+  font-size: 2rem;
   text-transform: uppercase;
   text-shadow: 1px 1px 10px rgba(0,0,0,0.1);
   padding: 10px 20px;
 
   @include tablet {
-    font-size: 5rem;
+    font-size: 4rem;
   }
 
   @include desktop {
