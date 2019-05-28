@@ -1,12 +1,11 @@
 h1 {
   font-size: 1.6rem;
-  line-height: 2rem;
   font-weight: 500;
   color: $white;
+  line-height: 1;
 
   @include mobile {
     font-size: 1.4rem;
-    line-height: 1.6rem;
   }
 }
 
