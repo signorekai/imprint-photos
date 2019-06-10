@@ -47,6 +47,9 @@ class StarterSite extends Timber\Site {
 		add_action( 'init', array( $this, 'register_post_types' ) );
 		add_action( 'init', array( $this, 'register_taxonomies' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+
+		add_filter( 'sanitize_file_name', array( $this, 'so_3261107_hash_filename' ), 10 );
+
 		
 		remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 		remove_action( 'wp_print_styles', 'print_emoji_styles' );
@@ -62,6 +65,17 @@ class StarterSite extends Timber\Site {
 	/** This is where you can register custom taxonomies. */
 	public function register_taxonomies() {
 
+	}
+
+	/**
+	 * @link http://stackoverflow.com/a/3261107/247223
+	 */
+	public function so_3261107_hash_filename( $filename ) {
+		$info = pathinfo( $filename );
+		$ext  = empty( $info['extension'] ) ? '' : '.' . $info['extension'];
+		$name = basename( $filename, $ext );
+
+		return md5( $name ) . $ext;
 	}
 
 	public function enqueue_scripts() {
