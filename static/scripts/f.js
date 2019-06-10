@@ -33,6 +33,16 @@ const f = (function(document, window, f) {
 
       el.className = classes.join(' ');
     }
+
+    return this; // chaining;
+  }
+
+  elem.delay = function(int) {
+    const that = this;
+    if (!!int) int = 0;
+    setTimeout(function() {
+      return that;
+    }, int);
   }
 
   elem.css = function(attr, val) {
@@ -45,18 +55,24 @@ const f = (function(document, window, f) {
 
   elem.removeClass = function(className) {
     const el = this;
-    if (el.classList)
+    if (el.classList) {
       el.classList.remove(className);
-    else
+    } else {
       el.className = el.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+    }
+
+    return this; // chaining
   }
 
   elem.addClass = function(className) {
     const el = this;
-    if (el.classList)
+    if (el.classList) {
       el.classList.add(className);
-    else
+    } else {
       el.className += ' ' + className;
+    }
+    
+    return this; // chaining
   }
 
   elem.attr = function(attr, val) {
