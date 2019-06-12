@@ -1,4 +1,4 @@
-# Wordpress Theme created by [Sulphur](http://sulphur.com.sg) for Singapore International Mediation Centre
+# Wordpress Theme created by [Sulphur](http://sulphur.com.sg) for Imprint Photos 
 
 ## Wordpress Dependencies
 
