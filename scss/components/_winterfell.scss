@@ -16,7 +16,6 @@
 }
 
 .winterfell-lightbox-caption {
-  position: absolute;
   bottom: 0;
   font-size: 0.95rem;
   font-weight: 300;
@@ -25,6 +24,7 @@
   transform: translateY(-20px);
   overflow: visible;
   transition: all 0.2s $easing;
+  max-width: inherit !important;
 }
 
 .winterfell-lightbox-caption--show {
@@ -117,5 +117,5 @@
 
 .winterfell-img {
   max-width: 100% !important;
-  max-height: 100% !important;
+  max-height: 95% !important;
 }
