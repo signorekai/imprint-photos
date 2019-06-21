@@ -119,6 +119,14 @@ class StarterSite extends Timber\Site {
 		$theme = new Timber\Theme();
 		$context['footer_text'] = $theme->theme_mod('footer_text');
 		$context['footer_bg'] = $theme->theme_mod('footer_bg');
+		$context['footer'] = array(
+			'text' => $theme->theme_mod('footer_text'),
+			'bg' => $theme->theme_mod('footer_bg'),
+		);
+		$context['seo'] = array(
+			'description' => $theme->theme_mod('seo_description'),
+			'photo' => $theme->theme_mod('seo_photo'),
+		);
 
 		$query = array(
 			'orderby' => 'menu_order',

@@ -21,7 +21,7 @@ function add_customizer_settings($wpc) {
   $wpc->add_setting('seo_photo');
   $wpc->add_control( new WP_Customize_Upload_Control( $wpc, 'seo_photo',
     array(
-    'label' => __('Cover Image', 'winterfell'),
+    'label' => __('Featured Image', 'winterfell'),
     'description' => __('Select the cover image that will be displayed when shared on social media', 'winterfell'),
     'section' => 'seo',
     'settings' => 'seo_photo',
