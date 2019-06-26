@@ -101,6 +101,12 @@
     margin-left: 5%;
     width: 85%;
   }
+
+  // start of text styling selectors
+
+  p:first-child {
+    margin-top: 0;
+  }
 }
 
 .portfolio__masonry {
