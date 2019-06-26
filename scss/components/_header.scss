@@ -14,6 +14,14 @@
   margin-right: 20px;
 }
 
+.links--short {
+  visibility: visible;
+  pointer-events: all;
+  opacity: 1;
+  transform: translateX(0)
+  background-color: none; 
+}
+
 .links__wrapper {
   @include clearfix;
   position: relative;
