@@ -1,5 +1,5 @@
 {% if menu %}
-	<ul class="links">
+	<ul class="links {% if menu.length < 3 %}links--short{%endif%}">
 	{% for item in menu %}
 		<li class="{{ item.classes | join(' ') }} links__wrapper">
 			<a target="{{ item.target }}" href="{{ item.link }}" class="links__item">{{ item.title }}</a>
