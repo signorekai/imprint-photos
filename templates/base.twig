@@ -14,7 +14,7 @@
 						{{ source("/static/images/logo--textless--white.svg" )}}
 					</a>
 					<nav class="header__nav" role="navigation">
-						{% if menu.get_items.length > 3 %}
+						{% if menu.get_items.length > 1 %}
 							<div class="header__nav-icon"></div>
 						{% endif %}
 							{% include "menu.twig" with {'menu': menu.get_items} %}
