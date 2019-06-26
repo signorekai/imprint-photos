@@ -1,7 +1,7 @@
 css:
 	nodemon -w scss/ -x "sass scss/main.scss static/css/main.css -s compressed" -e ".scss"
 
-push-prod:
+production:
 	git checkout master && git merge develop && git push && make update-tag && git checkout develop
 
 update-tag:
