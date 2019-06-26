@@ -123,8 +123,6 @@ const f = (function(document, window, f) {
         const elem = e[0];
         const className = el.data('daybreak');
         const ratio = 1 - ((original.getBoundingClientRect().y + (original.getBoundingClientRect().height*2)) / document.documentElement.clientHeight);
-        console.log(elem);
-        console.log(elem.isIntersecting);
         if (elem.isIntersecting && elem.intersectionRatio > ratio) {
           original.addClass(className);
           opts.onEnter(el, original);
