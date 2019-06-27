@@ -26,6 +26,7 @@
                     <img class="portfolio__masonry-img"
                       src="{{photo.sizes.thumbnail|resize(10)}}"
                       data-srcset="{{photo.sizes.thumbnail}} 1x, {{photo.sizes.medium}} 2x"
+                      data-webp-srcset="{{photo.sizes.thumbnail|towebp}} 1x, {{photo.sizes.medium|towebp}} 2x"
                       alt="{{ project.description }}">
                   </picture>
                 </a>

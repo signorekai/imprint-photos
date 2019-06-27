@@ -34,6 +34,14 @@ ready(function() {
       );
     },
   });
+  
+  Modernizr.on('webp', function(result) {
+    if (result) {
+      f('.portfolio__masonry-item').forEach(function(el) {
+        el.f('img').attr('data-srcset', el.f('img').data('webp-srcset'));
+      });
+    }
+  });
 
   const masonryObserver = new IntersectionObserver(function(e) {
     e.forEach(function(el) {
