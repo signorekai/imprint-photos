@@ -3,7 +3,7 @@
 {% block content %}
 	<div class="content-wrapper" data-template="single-portfolio.twig">
     <article class="post-type-{{post.post_type}} portfolio">
-      <header class="portfolio__header" style="background-image: url({{post.thumbnail.src}})">
+      <header class="portfolio__header" data-bg="{{post.thumbnail.src}}" data-webp-bg="{{post.thumbnail.src|towebp}}">
         <h1 class="portfolio__title">{{post.title}}</h1>
       </header>
       <section class="portfolio__body-wrapper">
@@ -42,7 +42,7 @@
   {# <footer class="footer" style="background-image: url({{post.thumbnail.src}})"> #}
   <footer class="footer" data-daybreak="header--white">
     <div class="footer__wrapper">
-      <div class="footer__overlay {{ test }}" style="background-image: url({{ footer.bg.src('hd') }})"></div>
+      <div class="footer__overlay {{ test }}" data-bg="{{footer.bg.src}}" data-webp-bg="{{footer.bg.src|towebp}}"></div>
       <h2 class="footer__text">
         {{ footer.text }}
       </h2>
