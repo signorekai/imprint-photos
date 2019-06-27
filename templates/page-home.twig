@@ -3,7 +3,7 @@
 {% block content %}
   <div class="wrapper wrapper--full">
       {% for work in works %}
-        <div class="overlay" id="overlay-{{work.ID}}" style="background-image: url({{work.thumbnail.src('hd')}})"></div>
+        <div class="overlay" id="overlay-{{work.ID}}" data-bg="{{work.thumbnail.src('hd')}}" data-webp-bg="{{ work.thumbnail.src('hd')|towebp}}"></div>
       {% endfor %}
     <article class="post-type-{{post.post_type}}" id="{{post.post_type}}-{{post.ID}}">
       {{ post.content }}
