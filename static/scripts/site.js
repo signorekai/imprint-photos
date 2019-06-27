@@ -24,4 +24,16 @@ ready(function() {
       console.log(el.hostname);
     }
   })
+
+  Modernizr.on('webp', function(result) {
+    if (result) {
+      f('[data-webp-bg]').forEach(function(el) {
+        el.css('background-image', `url(${el.data('webp-bg')}`);
+      });
+    } else {
+      f('[data-bg]').forEach(function(el) {
+        el.css('background-image', `url(${el.data('bg')}`);
+      });
+    }
+  });
 });
