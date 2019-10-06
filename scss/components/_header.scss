@@ -2,7 +2,6 @@
   @include reset-list;
   @include clearfix;
   line-height: 0;
-  background-color: $white;
   padding: 0;
   margin: 0;
   order: 1;
@@ -28,39 +27,40 @@
   z-index: 100;
   overflow: hidden;
 
-  &:before {
-    content: "";
-    width: 100%;
-    height: 100%;
-    z-index: 50;
-    top: 0;
-    left: 0;
-    background-color: $secondary;
-    transition: transform 0.2s $easing;
-    transform: translateX(-100%) skewX(10deg);
-    opacity: 0;
-    position: absolute;
-  }
+  // &:before {
+  //   content: "";
+  //   width: 100%;
+  //   height: 100%;
+  //   border-radius: 50%;
+  //   z-index: 50;
+  //   top: 0;
+  //   left: 0;
+  //   background-color: $secondary;
+  //   transition: transform 0.2s $easing;
+  //   transform: translateX(-100%) skewX(10deg);
+  //   opacity: 0;
+  //   position: absolute;
+  // }
 
-  &:hover {
-    &:before {
-      opacity: 1;
-      transform: translateX(0) skewX(0deg) !important;
-    }
-  }
+  // &:hover {
+  //   &:before {
+  //     opacity: 1;
+  //     transform: translateX(0) skewX(0deg) !important;
+  //   }
+  // }
 
-  &:first-child .links__item {
-    padding-left: 20px;
-  }
+  // &:first-child .links__item {
+  //   padding-left: 20px;
+  // }
 
   &:last-child:before {
     transform: translateX(100%) skewX(-10deg);
     // padding-right: 20px;
   }
 
-  &:last-child .links__item {
-    padding-right: 20px;
-  }
+  // &:last-child .links__item {
+  //   padding-right: 20px;
+  // }
 }
 
 .links__item {
@@ -68,16 +68,23 @@
   text-transform: uppercase;
   color: $primary;
   font-weight: normal;
-  padding: 20px 10px;
+  background-color: $white;
+  border-radius: 50%;
+  // padding: 20px 10px;
   display: block;
   font-weight: 600;
   position: relative;
   z-index: 100;
   transition: all 0.2s $easing;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
 
   &:hover {
     color: $white;
-    padding: 20px;
+    background-color: $primary;
+    font-size: 1.1rem;
   }
 }
 

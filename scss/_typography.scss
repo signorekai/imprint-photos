@@ -3,6 +3,7 @@ h1 {
   font-weight: 500;
   color: $white;
   line-height: 1;
+  font-family: "acumin-pro-wide";
 
   @include mobile {
     font-size: 1.4rem;
