@@ -1,3 +1,4 @@
+@import "fonts";
 @import "vars";
 @import "helpers";
 @import "normalize";
@@ -173,6 +174,15 @@ $bulletMargin: 10px;
 main.main {
   position: relative;
   z-index: 150;
+}
+
+// if browser is webp compatible
+.webp {
+
+  // not working yet: https://stackoverflow.com/a/26968351
+  // [data-webp-bg] {
+  //   background-image: url(attr(data-webp-bg url));
+  // }
 }
 
 @import "typography";
