@@ -4,15 +4,34 @@ body.home {
   
   > header {
     margin-top: 0;
+
+    .links__item {
+      color: $white;
+      opacity: 0.8;
+
+      @include desktop {
+        opacity: 0.9;
+      }
+
+      &:hover {
+        color: $black;
+      }
+    }
   }
   
   > main {
-    padding-top: $min-margin-v;
+    padding-top: $min-margin-v * 3;
     margin-bottom: inherit;
     position: static;
 
+    @include tablet {
+      padding-top: $min-margin-v;
+    }
+
     h1 {
       transition: all 0.2s $easing;
+      margin: 0;
+      margin-bottom: 2rem;
     }
 
     h1.h1--hide {
@@ -20,8 +39,15 @@ body.home {
       transform: translateY(20px);
     }
 
+    @include tablet {
+      > .wrapper {
+        max-width: 65vw;
+      }
+    }
+
     @include desktop {
       > .wrapper {
+
         max-width: 45vw;
       }
     }
