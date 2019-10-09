@@ -106,8 +106,11 @@ $bulletMargin: 10px;
     transition: all 0.2s $easing;
   }
   
-  &:hover {
+  &.works-nav__link--current, &:hover {
+    font-weight: bold;
     opacity: 1;
+    transform: skewX(-6deg);
+
     &:before {
       width: $bulletWidth;
       height: $bulletHeight;
@@ -128,17 +131,6 @@ $bulletMargin: 10px;
   &:hover:before {
     width: $bulletWidth;
     height: $bulletHeight;
-  }
-}
-
-.works-nav__link--current {
-  font-weight: bold;
-
-  &:before {
-      width: 16px !important;
-      height: 3px !important;
-      margin-right: $bulletMargin;
-      transform: scale(1);
   }
 }
 
