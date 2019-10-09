@@ -96,7 +96,7 @@ $bulletMargin: 10px;
   margin-left: -10px;
   max-width: 200px;
   transition: all 0.2s $easing;
-
+  
   &:before {
     content: "";
     width: 0;
@@ -112,10 +112,10 @@ $bulletMargin: 10px;
     transform: skewX(-6deg);
 
     &:before {
-      width: $bulletWidth;
-      height: $bulletHeight;
-      margin-right: $bulletMargin;
-      transform: scale(1);
+        width: $bulletWidth;
+        height: $bulletHeight;
+        margin-right: $bulletMargin;
+        transform: scale(1);
     }
   }
 }
