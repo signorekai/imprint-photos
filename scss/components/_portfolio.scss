@@ -123,6 +123,10 @@
   }
 
   @include desktop {
+    width: calc(25% - 10px);
+  }
+
+  @include wide {
     width: calc(20% - 10px);
   }
 
