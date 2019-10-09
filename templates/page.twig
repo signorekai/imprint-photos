@@ -16,14 +16,13 @@
 {% endblock %}
 
 {% block footer %}
+  {# <footer class="footer" style="background-image: url({{post.thumbnail.src}})"> #}
   <footer class="footer" data-daybreak="header--white">
     <div class="footer__wrapper">
-      <div class="footer__overlay test" style="background-image: url({{ footer.bg('hd') }})"></div>
-      {% if footer.text.length > 0 %}
+      <div class="footer__overlay {{ test }}" data-bg="{{footer.bg.src}}" data-webp-bg="{{footer.bg.src|towebp}}"></div>
       <h2 class="footer__text">
         {{ footer.text }}
       </h2>
-      {% endif %}
       <nav class="works-nav works-nav--inline-block works-nav--with-bullet">
         {% for work in works %}
           <a class="works-nav__link" href="{{work.link}}" data-target="#overlay-{{work.ID}}" alt="{{work.custom['main_description']}}">{{work.post_title}}</a>
