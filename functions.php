@@ -50,7 +50,6 @@ class StarterSite extends Timber\Site {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 
 		add_filter( 'sanitize_file_name', array( $this, 'so_3261107_hash_filename' ), 10 );
-
 		
 		remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 		remove_action( 'wp_print_styles', 'print_emoji_styles' );
@@ -98,9 +97,11 @@ class StarterSite extends Timber\Site {
 
 		wp_enqueue_script( 'f', get_template_directory_uri() . '/static/scripts/f.js', array(), '1.0.0' );
 		wp_enqueue_script( 'site', get_template_directory_uri() . '/static/scripts/site.js', array('f'), '1.0.0', true );
+
 		if (is_front_page()) {
 			wp_enqueue_script( 'home', get_template_directory_uri() . '/static/scripts/home.js', array('f'), '1.0.0', true );
 		}
+
 		if ( is_singular('portfolio') ) {
 			// wp_enqueue_script( 'masonry', get_template_directory_uri() . '/static/scripts/site.js', array('f'), '1.0.0', true );
 			wp_enqueue_script('masonry');
