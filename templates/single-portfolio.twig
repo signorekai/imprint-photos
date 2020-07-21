@@ -18,12 +18,12 @@
                 <div href="" class="portfolio__masonry-item-sizer"></div>
                 {% for project in post.meta('projects') %}
                   {# <!-- {{project|print_f}} --> #}
-                  <div class="portfolio__masonry-item portfolio__masonry-item--width3 portfolio__masonry-description">
+                  <div class="portfolio__masonry-item portfolio__masonry-item--width3 portfolio__masonry-description" id="{{project.name|slugify}}">
                   <h2>{{project.name}}</h2>
                   <h4>{{project.description}}</h4>
                   </div>
                   {% for photo in project.photos %}
-                    <div data-project="{{project.name}}" data-description="{{project.description}}" data-full-size="{{ photo.sizes.large }}" class="portfolio__masonry-item">
+                    <div data-project="{{project.name|slugify}}" data-description="{{project.description}}" data-full-size="{{ photo.sizes.large }}" class="portfolio__masonry-item">
                       <picture class="portfolio__masonry-pic" style="padding-top: {{ (photo.sizes['thumbnail-height'] / photo.sizes['thumbnail-width']) * 100 }}%">
                         <img class="portfolio__masonry-img"
                           src="{{photo.sizes.thumbnail|resize(10)}}"
@@ -33,6 +33,9 @@
                       </picture>
                     </div>
                   {% endfor %}
+                <div class="portfolio__masonry-item portfolio__masonry-view-more portfolio__masonry-item--active" data-project="{{project.name|slugify}}">
+                  <a href="#{{project.name|slugify}}">View all +</a>
+                </div>
                 {% endfor %}
               </div>
           </aside>

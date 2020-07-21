@@ -78,14 +78,14 @@ ready(function() {
             }
         });
 
-        next.container.f('.portfolio__masonry-description + .portfolio__masonry-item').forEach(function(el) {
+        next.container.f('.portfolio__masonry-view-more').forEach(function(el) {
           let element = el
           el.on('mousedown', function (e) {
 
             const projectName = el.data('project')
 
             next.container.f(`.portfolio__masonry-item[data-project='${projectName}']`).forEach(function(el) {
-              el.addClass('portfolio__masonry-item--active')
+              el.toggleClass('portfolio__masonry-item--active')
             })
 
             setTimeout(() => {
