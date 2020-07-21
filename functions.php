@@ -203,6 +203,9 @@ class StarterSite extends Timber\Site {
 	public function add_to_twig( $twig ) {
 		$twig->addExtension( new Twig_Extension_StringLoader() );
 		$twig->addFilter( new Twig_SimpleFilter( 'myfoo', array( $this, 'myfoo' ) ) );
+		$twig->addFilter( new Timber\Twig_Filter( 'slugify', function( $title ) {
+			return sanitize_title( $title );
+		}));
 		return $twig;
 	}
 
