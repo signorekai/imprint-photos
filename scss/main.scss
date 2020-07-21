@@ -4,7 +4,7 @@
 @import "normalize";
 
 html, body {
-  font-family: "futura-pt", -apple-system, BlinkMacSystemFont,
+  font-family: "Maison Neue", -apple-system, BlinkMacSystemFont,
   “Segoe UI”, “Roboto”, “Oxygen”,
   “Ubuntu”, “Cantarell”, “Fira Sans”,
   “Droid Sans”, “Helvetica Neue”, sans-serif;;
@@ -22,6 +22,7 @@ body, header, div, section, header, main, article, a {
 body {
   background: $grey;
   margin: 0;
+  transition: background 0.5s $easing;
 }
 
 ::selection {
@@ -38,11 +39,20 @@ a {
 }
 
 .works-nav {
+  font-family: 'moret', serif;
+  font-size: 1.3rem;
+
+  @include mobile {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+
   @include tablet {
     position: absolute;
     bottom: $min-margin-v;
     z-index: 100;
   }
+
   &:hover {
     .works__link {
       opacity: 0.7;
@@ -50,9 +60,7 @@ a {
   }
   
   @include desktop {
-    max-width: 200px;
-    margin-top: 5vh;
-    
+    // max-width: 200px;
   }
 }
 
@@ -94,8 +102,11 @@ $bulletMargin: 10px;
   align-items: center;
   padding: 3px 10px;
   margin-left: -10px;
-  max-width: 200px;
+  // max-width: 200px;
   transition: all 0.2s $easing;
+  font-family: 'moret', serif;
+  font-size: 1.2rem;
+  font-weight: 300;
   
   &:before {
     content: "";
@@ -108,8 +119,9 @@ $bulletMargin: 10px;
   
   &.works-nav__link--current, &:hover {
     font-weight: bold;
+    // font-size: 1.5rem;
     opacity: 1;
-    transform: skewX(-6deg);
+    // transform: skewX(-6deg);
 
     &:before {
         width: $bulletWidth;
@@ -118,11 +130,14 @@ $bulletMargin: 10px;
         transform: scale(1);
     }
   }
+
+  &:hover {
+    // font-size: 1.3rem;
+  }
 }
 
 .works-nav__link--blue {
   color: $primary;
-  font-weight: normal;
 
   &:before {
     background-color: $primary;
@@ -159,7 +174,9 @@ $bulletMargin: 10px;
   z-index: 10;
 
   &.overlay--show {
-    opacity: 1;
+    @include desktop {
+      opacity: 1;
+    }
   }
 }
 

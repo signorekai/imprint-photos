@@ -1,8 +1,18 @@
 body.home {
-  background-color: $primary;
+  background: $primary;
+}
+
+.home {
   color: $white;
+
+  .footer {
+    display: none;
+  }
   
-  > header {
+  > .header {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
     margin-top: 0;
 
     .links__item {
@@ -19,8 +29,8 @@ body.home {
     }
   }
   
-  > main {
-    padding-top: $min-margin-v * 3;
+  main {
+    padding-top: $min-margin-v;
     margin-bottom: inherit;
     position: static;
 
@@ -31,7 +41,6 @@ body.home {
     h1 {
       transition: all 0.2s $easing;
       margin: 0;
-      margin-bottom: 2rem;
     }
 
     h1.h1--hide {
@@ -40,15 +49,15 @@ body.home {
     }
 
     @include tablet {
-      > .wrapper {
+      .wrapper {
         max-width: 65vw;
       }
     }
 
     @include desktop {
-      > .wrapper {
+      .wrapper {
 
-        max-width: 45vw;
+        max-width: 60vw;
       }
     }
   }

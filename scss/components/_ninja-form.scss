@@ -1,6 +1,15 @@
 .contact-form {
+  width: 100%;
+  font-family: 'Maison Neue';
+
+  .label-left .nf-field-label {
+    width: 25%;
+    text-align: left;
+  }
+
   .nf-form-fields-required {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
+    display: none;
   }
 
   .nf-form-layout > form > div {
@@ -8,11 +17,13 @@
     flex-direction: column;
 
     .nf-before-form-content {
-      order: 2;
+      order: 1;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
     }
 
     .nf-form-content {
-      order: 1;
+      order: 2;
       margin: 0;
     }
 
@@ -38,7 +49,8 @@
 
   // textareas and inputs
   .nf-form-content .list-select-wrap .nf-field-element > div, .nf-form-content input:not([type="button"]), .nf-form-content textarea {
-    border: 1px solid $primary;
+    border: none;
+    border-bottom: 1px solid $primary;
     background: transparent ;
     color: $primary;
 
@@ -55,5 +67,19 @@
     &:hover {
       cursor: pointer;
     }
+  }
+  .nf-error-msg {
+    font-size: 0.8rem;
+  }
+
+  .nf-form-content button, .nf-form-content input[type="button"], .nf-form-content input[type="submit"] {
+    background-color: $primary;
+    font-family: 'Formula Condensed';
+    font-size: 1.3rem;
+    padding: 7px 14px;
+    text-align: center;
+    display: block;
+    width: 100%;
+    letter-spacing: 2px;
   }
 }

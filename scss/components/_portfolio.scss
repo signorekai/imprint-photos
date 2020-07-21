@@ -55,7 +55,7 @@
 
 .portfolio__body-wrapper {
   width: 100%;
-  padding: $min-margin-v $min-margin-h;
+  padding: $min-margin-v * 2 $min-margin-h 0;
   background-color: $grey;
   position: relative;
   z-index: 200;
@@ -72,21 +72,28 @@
 
 .portfolio__sidebar {
   order: 1;
+  width: 100%;
 
   @include desktop {
     order: 1;
-    width: 10%;
+    width: 40%;
     position: -webkit-sticky;
-    position: sticky;
-    top: 150px;
-    min-width: 170px;
+    margin-top: 120px;
+    min-width: 300px;
+  }
+
+  @include wide {
+    max-width: 500px;
   }
 
   .works-nav {
-    display: none;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
 
     @include desktop {
       display: block;
+      margin-top: 1rem;
+      margin-bottom: 2rem;
     }
   }
 }
@@ -96,10 +103,15 @@
   width: 100%;
   text-align: center;
 
+  @include not-desktop {
+    display: none;
+  }
+
   @include desktop {
-    order: 2;
-    margin-left: 5%;
-    width: 85%;
+    // margin-left: 5%;
+    // width: 85%;
+    position: sticky;
+    top: 0;
   }
 
   // start of text styling selectors
@@ -111,45 +123,128 @@
 
 .portfolio__masonry {
   width: 100%;
+  margin: 1rem 0 1rem;
+ 
+  @include desktop {
+    margin-top: 1rem;
+  }
 }
 
-.portfolio__masonry-item {
+.portfolio__masonry-item-sizer, .portfolio__masonry-item {
   margin-bottom: 10px;
   width: 100%;
   overflow: hidden;
 
   @include tablet {
-    width: calc(33.33% - 10px);
+    width: calc(50% - 20px);
   }
 
   @include desktop {
-    width: calc(25% - 10px);
+    width: calc(33.33% - 10px);
   }
 
-  @include wide {
-    width: calc(20% - 10px);
+  // @include wide {
+  //   width: calc(20% - 10px);
+  // }
+}
+
+.portfolio__masonry-item {
+
+  @include desktop {
+    filter: grayscale(1);
   }
 
   &:hover {
+    filter: grayscale(0);
+    cursor: zoom-in;
+
     img {
       transform: scale(1.1);
       transform-origin: center center;
-      opacity: 0.6;
+      // opacity: 0.6;
     }
+  }
+}
+
+.portfolio__masonry-description {
+  width: 100%;
+  text-align: center;
+  padding: 0.5em 1em 1em;
+  
+  h2 {
+    color: $secondary;
+    text-shadow: none;
+    font-weight: normal;
+  }
+
+  h4 {
+    font-family: 'moret';
+    font-size: 1rem;
+    margin-top: 0.4rem;
+    margin-bottom: 0;
+  }
+
+  @include desktop {
+    display: none;
+  }
+}
+
+
+// accordion function
+
+@include not-desktop {
+
+  .portfolio__masonry-description {
+    &:before {
+      content: '';
+      display: block;
+      border-top: solid 1px $primary;
+      width: 50%;
+      margin: 2rem auto calc(0.5rem + 10px);
+    }
+  }
+
+  .portfolio__masonry-description ~ .portfolio__masonry-item:not(.portfolio__masonry-description) {
+    opacity: 0;
+    max-height: 0;
+    margin-bottom: 0;
+  }
+
+  .portfolio__masonry-description + .portfolio__masonry-item:not(.portfolio__masonry-description) {
+    &:after {
+      content: 'View more +';
+      display: block;
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      padding: 0.5rem;
+    }
+  }
+  
+  .portfolio__masonry-description + .portfolio__masonry-item:not(.portfolio__masonry-description), .portfolio__masonry-item--active {
+    opacity: 1 !important;
+    max-height: none !important;
+    margin-bottom: 10px !important;
+  }
+
+  .portfolio__masonry-item--active:after {
+    display: none !important;
   }
 }
 
 .portfolio__masonry-img {
   width: 100%;
-  transition: all 0.2s $easing;
+  transition: all 0.4s $easing;
   position: absolute;
   top: 0;
   left: 0;
   opacity: 0.01;
+  transform: translateY(100%);
 }
 
 .portfolio__masonry-img--show {
   opacity: 1;
+  transform: translateY(0px);
 }
 
 .portfolio__masonry-pic {
@@ -158,5 +253,31 @@
   height: 0;
   width: 100%;
   padding-top: 100%;
-  background: #f0f0f0;
+  // background: #f0f0f0;
+}
+
+.gallery {
+  padding: 5vh;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.gallery__frame {
+  max-height: 85vh;
+  image-rendering: auto;
+}
+
+.gallery__photo {
+  object-fit: cover;
+  max-width: 100%;
+  height: 100%;
+}
+
+.gallery__description {
+  padding: 1rem;
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 0.8rem;
 }

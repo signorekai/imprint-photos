@@ -6,8 +6,8 @@
 	</head>
 {% endblock %}
 
-	<body class="{{body_class}}" data-template="base.twig">
-		<div id="wheelie" class="wheelie--init"></div>
+	<body class="{{body_class}}" data-template="base.twig" data-barba="wrapper">
+		<div id="wheelie" class=""></div>
 		<header class="header">
 			{% block header %}
 					<a class="header__logo" href="{{site.url}}" rel="home">
@@ -30,10 +30,9 @@
 		</main>
 
 		{% block footer %}
-			<footer id="footer">
-				{% include 'footer.twig' %}
-			</footer>
+			{% include 'footer.twig' %}
 		{% endblock %}
+		<script></script>
 			{{ function('wp_footer') }}
 	</body>
 </html>

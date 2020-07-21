@@ -18,6 +18,11 @@ const f = (function(document, window, f) {
 
   nodeList[forEach] = each;
 
+  elem.hasClass = function(className) {
+    const el = this;
+    return el.classList.contains(className);
+  }
+
   elem.toggleClass = function(className) {
     const el = this;
     if (el.classList) {

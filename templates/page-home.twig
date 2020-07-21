@@ -1,18 +1,19 @@
 {% extends "base.twig" %}
 
 {% block content %}
-  <div class="wrapper wrapper--full">
+  <div data-barba="container" data-barba-namespace="home" class="{{body_class}}">
+    <div class="wrapper wrapper--full">
       {% for work in works %}
-        <div class="overlay" id="overlay-{{work.ID}}" data-bg="{{work.thumbnail.src('hd')}}" data-webp-bg="{{ work.thumbnail.src('hd')|towebp}}"></div>
+        <div class="overlay" id="overlay-{{work.ID}}" style="background-image:url({{work.thumbnail.src('hd')}})" ></div>
       {% endfor %}
     <article class="post-type-{{post.post_type}}" id="{{post.post_type}}-{{post.ID}}">
       {{ post.content }}
       <nav class="works-nav">
-      {% for work in works %}
-        <a class="works-nav__link" href="{{work.link}}" data-target="#overlay-{{work.ID}}" alt="{{work.custom['main_description']}}">{{work.post_title}}</a>
-      {% endfor %}
+        {% for work in works %}
+          <a class="works-nav__link" href="{{work.link}}" data-target="#overlay-{{work.ID}}" alt="{{work.custom['main_description']}}">{{work.post_title}}</a>
+        {% endfor %}
       </nav>
-    </ul>
-    </article>
+      </article>
+    </div>
   </div>
 {% endblock %}

@@ -89,27 +89,18 @@ class StarterSite extends Timber\Site {
 		wp_register_script('masonry', get_template_directory_uri() . '/vendor/masonry.min.js', array('imagesloaded'), '4.2.2');
 		wp_register_script('rallax', get_template_directory_uri() . '/vendor/rallax.js', false, '2.0.4');
 		wp_register_script('lodash-custom', get_template_directory_uri() . '/vendor/lodash.min.js', false, '1.8.3');
-
+		wp_register_script('barbajs', 'https://unpkg.com/@barba/core', false, '2.9.7');
 		wp_enqueue_script('modernizr', get_template_directory_uri() . '/vendor/modernizr.js', false, '3.6.0', true);
 
 		wp_register_script('lightbox', get_template_directory_uri() . '/vendor/lightbox.min.js', false, '1.7.0', true);
 		wp_register_style('lightbox', get_template_directory_uri() . '/vendor/lightbox.min.css', false, '1.7.0');
 
+		wp_enqueue_script('masonry');
+		wp_enqueue_script('lightbox');
+		wp_enqueue_script('rallax');
+
 		wp_enqueue_script( 'f', get_template_directory_uri() . '/static/scripts/f.js', array(), '1.0.0' );
-		wp_enqueue_script( 'site', get_template_directory_uri() . '/static/scripts/site.js', array('f'), '1.0.0', true );
-
-		if (is_front_page()) {
-			wp_enqueue_script( 'home', get_template_directory_uri() . '/static/scripts/home.js', array('f'), '1.0.0', true );
-		}
-
-		if ( is_singular('portfolio') ) {
-			// wp_enqueue_script( 'masonry', get_template_directory_uri() . '/static/scripts/site.js', array('f'), '1.0.0', true );
-			wp_enqueue_script('masonry');
-
-			$dep = array('f', 'lightbox', 'rallax');
-			wp_enqueue_script( 'single-portfolio', get_template_directory_uri() . '/static/scripts/single-portfolio.js', $dep, '1.0.0', true );
-			wp_enqueue_style('lightbox');
-		}
+		wp_enqueue_script( 'site', get_template_directory_uri() . '/static/scripts/site.js', array('f', 'barbajs'), '1.0.0', true);
 
 		if ( is_page() ) {
 			$dep = array('f', 'rallax');
@@ -130,10 +121,12 @@ class StarterSite extends Timber\Site {
 		$context['footer_text'] = $theme->theme_mod('footer_text');
 		$context['footer_bg'] = new Timber\Image($theme->theme_mod('footer_bg'));
 		$context['test'] = "test";
+
 		$context['footer'] = array(
 			'text' => $theme->theme_mod('footer_text'),
 			'bg' => new Timber\Image($theme->theme_mod('footer_bg')),
 		);
+
 		$context['seo'] = array(
 			'description' => $theme->theme_mod('seo_description'),
 			'photo' => $theme->theme_mod('seo_photo'),
@@ -182,23 +175,6 @@ class StarterSite extends Timber\Site {
 			)
 		);
 
-		/*
-		 * Enable support for Post Formats.
-		 *
-		 * See: https://codex.wordpress.org/Post_Formats
-		 */
-		// add_theme_support(
-		// 	'post-formats', array(
-		// 		'aside',
-		// 		'image',
-		// 		'video',
-		// 		'quote',
-		// 		'link',
-		// 		'gallery',
-		// 		'audio',
-		// 	)
-		// );
-
 		add_theme_support( 'menus' );
 
 		register_nav_menus(
@@ -207,6 +183,7 @@ class StarterSite extends Timber\Site {
 			)
 		);
 
+		add_image_size('gallery', 1200);
 		add_image_size('hd', 1920, 1080);
 	}
 
