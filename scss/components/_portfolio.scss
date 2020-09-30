@@ -249,6 +249,11 @@
   left: 0;
   opacity: 0.01;
   transform: translateY(100%);
+
+  @include desktop {
+    opacity: 1;
+    transform: translateY(0px);
+  }
 }
 
 .portfolio__masonry-img--show {

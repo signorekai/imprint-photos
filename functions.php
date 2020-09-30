@@ -89,7 +89,7 @@ class StarterSite extends Timber\Site {
 		wp_register_script('masonry', get_template_directory_uri() . '/vendor/masonry.min.js', array('imagesloaded'), '4.2.2');
 		wp_register_script('rallax', get_template_directory_uri() . '/vendor/rallax.js', false, '2.0.4');
 		wp_register_script('lodash-custom', get_template_directory_uri() . '/vendor/lodash.min.js', false, '1.8.3');
-		wp_register_script('barbajs', 'https://unpkg.com/@barba/core', false, '2.9.7');
+		wp_register_script('barbajs', get_template_directory_uri() . '/vendor/barba.umd.js', false, '2.9.7');
 		wp_enqueue_script('modernizr', get_template_directory_uri() . '/vendor/modernizr.js', false, '3.6.0', true);
 
 		wp_register_script('lightbox', get_template_directory_uri() . '/vendor/lightbox.min.js', false, '1.7.0', true);

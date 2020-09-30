@@ -90,10 +90,8 @@
   }
 
   a {
-    font-size: 1.8rem;
-    line-height: 2.2rem;
-    padding: 0px 5px;
-    margin: 0;
+    font-size: 1em;
+    font-weight: normal;
     color: $white;
     border-bottom: solid 3px $white;
     transition: all 0.3s $easing;

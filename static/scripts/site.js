@@ -1,5 +1,14 @@
 ready(function() {
 
+  const masonryObserver = new IntersectionObserver(function(e) {
+    e.forEach(function(el) {
+      if (el.isIntersecting) {
+        el.target.f('img').attr('srcset', el.target.f('img').data('srcset'));
+        el.target.f('img').addClass('portfolio__masonry-img--show')
+      }
+    })
+  }, { threshold: 0.5 });
+
   barba.init({
     prevent: ({el}) => el.href.indexOf('wp-admin') !== -1 || el.data('lightbox'),
     views: [{
@@ -12,14 +21,12 @@ ready(function() {
         var $nav = next.container.f('a.works-nav__link');
         if ($nav) {
           $nav.on('mouseenter', function() {
-            console.log('mouseenter', this)
             next.container.f(this.data('target')).addClass('overlay--show');
             // f('.header__svg').addClass('header__svg--show');
             // f('main article h1').addClass('h1--hide');
           });
 
           $nav.on('mouseleave', function() {
-            console.log('mouseleave', this)
             next.container.f(this.data('target')).removeClass('overlay--show');
             // f('.header__svg').removeClass('header__svg--show');
             // f('main article h1').removeClass('h1--hide');
@@ -32,23 +39,13 @@ ready(function() {
     }, {
       namespace: 'portfolio-page',
       beforeEnter() {
-        console.log('portfolio-page enter hook')
+        console.log('portfolio-page beforeEnter hook')
         f('body').addClass('single')
         f('body').addClass('single-portfolio')
       },
       afterEnter({next}) {
         window.scrollTo(0, 0);
         console.log('portfolio-page afterEnter hook')
-        console.log(next.container.f('.portfolio__masonry'))
-
-        // header images
-        next.container.f('[data-replace-img]').forEach(function(el) {
-          if (Modernizr.webp) {
-            el.css('background-image', `url(${el.data('webp-bg')}`);
-          } else {
-            el.css('background-image', `url(${el.data('bg')}`);
-          }
-        });
 
         // masonry
         const msnry = new Masonry(next.container.f('.portfolio__masonry'), {
@@ -63,7 +60,7 @@ ready(function() {
           msnry.layout();
         });
 
-        next.container.f('.portfolio__masonry-item:not(.portfolio__masonry-description)').forEach(function(el) {
+        next.container.f('.portfolio__masonry-item:not(.portfolio__masonry-description):not(.portfolio__masonry-view-more)').forEach(function(el) {
 
           el.on('mouseenter', function (e) {
             next.container.f('.gallery__photo').attr('src', (e.target.data('full-size')))
@@ -75,14 +72,14 @@ ready(function() {
             el.f('img').attr('data-srcset', el.f('img').data('webp-srcset'));
             // } else {
             // el.f('img').attr('data-srcset', el.f('img').data('webp-srcset'));
-            }
+          }
+
+          masonryObserver.observe(el);
         });
 
         next.container.f('.portfolio__masonry-view-more').forEach(function(el) {
-          let element = el
+          const projectName = el.data('project')
           el.on('mousedown', function (e) {
-
-            const projectName = el.data('project')
 
             next.container.f(`.portfolio__masonry-item[data-project='${projectName}']`).forEach(function(el) {
               el.toggleClass('portfolio__masonry-item--active')
@@ -93,19 +90,6 @@ ready(function() {
             }, 200)
           })
         }) 
-
-        const masonryObserver = new IntersectionObserver(function(e) {
-          e.forEach(function(el) {
-            if (el.isIntersecting) {
-              el.target.f('img').attr('srcset', el.target.f('img').data('srcset'));
-              el.target.f('img').addClass('portfolio__masonry-img--show')
-            }
-          })
-        }, { threshold: 0.5 });
-
-        next.container.f('.portfolio__masonry-item:not(.portfolio__masonry-description)').forEach(function(el) {
-          masonryObserver.observe(el);
-        });
 
         const headerParallax = rallax(f('.portfolio__header'), {
           speed: 0.4
@@ -125,7 +109,11 @@ ready(function() {
           next.container.f('.portfolio__header').style.opacity = $percentage;
         });
       },
-      afterLeave(data) {
+      afterLeave({current}) {
+        current.container.f('.portfolio__masonry-item:not(.portfolio__masonry-description):not(.portfolio__masonry-view-more)').forEach(function(el) {
+          masonryObserver.unobserve(el)
+        });
+
         f('body').removeClass('single')
         f('body').removeClass('single-portfolio')
       }
