@@ -1,10 +1,9 @@
 <?php
 /**
- * Timber starter-theme
- * https://github.com/timber/starter-theme
+ * Winterfell for Liuying
  *
- * @package  WordPress
- * @subpackage  Timber
+ * @package  Sulphur 
+ * @package  Winterfell 
  * @since   Timber 0.1
  */
 
