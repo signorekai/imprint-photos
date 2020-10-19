@@ -59,10 +59,10 @@ class StarterSite extends Timber\Site {
 	}
 	/** This is where you can register custom post types. */
 	public function register_post_types() {
+
 		/**
 		 * Post Type: Portfolio Items.
 		 */
-	
 		$labels = array(
 			"name" => __( "Portfolio Items", "custom-post-type-ui" ),
 			"singular_name" => __( "Portfolio Item", "custom-post-type-ui" ),
@@ -85,7 +85,7 @@ class StarterSite extends Timber\Site {
 			"show_in_menu" => true,
 			"show_in_nav_menus" => true,
 			"exclude_from_search" => false,
-			"capability_type" => "portfolio",
+			"capability_type" => "post",
 			"map_meta_cap" => true,
 			"hierarchical" => false,
 			"rewrite" => array( "slug" => "work", "with_front" => false ),
@@ -95,6 +95,141 @@ class StarterSite extends Timber\Site {
 		);
 	
 		register_post_type( "portfolio", $args );
+
+		if( function_exists('acf_add_local_field_group') ):
+
+			acf_add_local_field_group(array(
+				'key' => 'group_5cd4525556e76',
+				'title' => 'Portfolio Meta',
+				'fields' => array(
+					array(
+						'key' => 'field_5cd45bb7b9e8e',
+						'label' => 'Main description',
+						'name' => 'main_description',
+						'type' => 'textarea',
+						'instructions' => 'This is the main description that will show up at the top of the portfolio page.',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'default_value' => '',
+						'placeholder' => '',
+						'maxlength' => '',
+						'rows' => '',
+						'new_lines' => '',
+					),
+					array(
+						'key' => 'field_5cd4526b8c531',
+						'label' => 'Projects',
+						'name' => 'projects',
+						'type' => 'repeater',
+						'instructions' => '',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'collapsed' => '',
+						'min' => 0,
+						'max' => 0,
+						'layout' => 'block',
+						'button_label' => '',
+						'sub_fields' => array(
+							array(
+								'key' => 'field_5cd452928c532',
+								'label' => 'Name',
+								'name' => 'name',
+								'type' => 'text',
+								'instructions' => '',
+								'required' => 1,
+								'conditional_logic' => 0,
+								'wrapper' => array(
+									'width' => '',
+									'class' => '',
+									'id' => '',
+								),
+								'default_value' => '',
+								'placeholder' => '',
+								'prepend' => '',
+								'append' => '',
+								'maxlength' => '',
+							),
+							array(
+								'key' => 'field_5cd452a58c533',
+								'label' => 'Description',
+								'name' => 'description',
+								'type' => 'textarea',
+								'instructions' => '',
+								'required' => 0,
+								'conditional_logic' => 0,
+								'wrapper' => array(
+									'width' => '',
+									'class' => '',
+									'id' => '',
+								),
+								'default_value' => '',
+								'placeholder' => '',
+								'maxlength' => '',
+								'rows' => '',
+								'new_lines' => '',
+							),
+							array(
+								'key' => 'field_5cd452b28c534',
+								'label' => 'Photos',
+								'name' => 'photos',
+								'type' => 'gallery',
+								'instructions' => '',
+								'required' => 1,
+								'conditional_logic' => 0,
+								'wrapper' => array(
+									'width' => '',
+									'class' => '',
+									'id' => '',
+								),
+								'min' => '',
+								'max' => '',
+								'insert' => 'append',
+								'library' => 'all',
+								'min_width' => '',
+								'min_height' => '',
+								'min_size' => '',
+								'max_width' => '',
+								'max_height' => '',
+								'max_size' => '',
+								'mime_types' => '',
+								'return_format' => 'array',
+								'preview_size' => 'medium',
+							),
+						),
+					),
+				),
+				'location' => array(
+					array(
+						array(
+							'param' => 'post_type',
+							'operator' => '==',
+							'value' => 'portfolio',
+						),
+					),
+				),
+				'menu_order' => 0,
+				'position' => 'acf_after_title',
+				'style' => 'seamless',
+				'label_placement' => 'top',
+				'instruction_placement' => 'label',
+				'hide_on_screen' => array(
+					0 => 'the_content',
+				),
+				'active' => true,
+				'description' => '',
+			));
+			
+			endif;
 	}
 	/** This is where you can register custom taxonomies. */
 	public function register_taxonomies() {

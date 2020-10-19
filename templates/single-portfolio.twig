@@ -25,17 +25,16 @@
                   {% endif %}
                   </div>
                   {% for photo in project.photos %}
-                    <div data-project="{{project.name|slugify}}" data-description="{{project.description}}" data-full-size="{{ photo.sizes.large }}" class="portfolio__masonry-item">
+                    <div data-project="{{project.name|slugify}}" data-description="{{project.description}}" data-full-size="{{ photo.sizes.large }}" class="portfolio__masonry-item {% if post.meta('projects')|length == 1 %}portfolio__masonry-item--active{% endif %}">
                       <picture class="portfolio__masonry-pic" style="padding-top: {{ (photo.sizes['thumbnail-height'] / photo.sizes['thumbnail-width']) * 100 }}%">
                         <img class="portfolio__masonry-img"
                           src="{{photo.sizes.thumbnail|resize(10)}}"
-                          srcset="{{photo.sizes.medium}} 1x, {{photo.sizes.large}} 2x"
-                          {# data-webp-srcset="{{photo.sizes.thumbnail|towebp}} 1x, {{photo.sizes.medium|towebp}} 2x" #}
+                          srcset="{{photo.sizes.large}} 1x, {{photo.sizes.full}} 2x"
                           alt="{{ project.description }}">
                       </picture>
                     </div>
                   {% endfor %}
-                  {% if project.photos|length > 1 %}
+                  {% if post.meta('projects')|length > 1 %}
                   <div class="portfolio__masonry-item portfolio__masonry-view-more portfolio__masonry-item--active" data-project="{{project.name|slugify}}">
                     <a href="#{{project.name|slugify}}">View all +</a>
                   </div>
