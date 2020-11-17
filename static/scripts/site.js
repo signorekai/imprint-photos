@@ -10,7 +10,7 @@ ready(function() {
   }, { threshold: 0.5 });
 
   barba.hooks.after(() => {
-    gtag('config', 'UA-44465652-6', {'page_path': window.location.pathname})
+    gtag('config', 'G-HE1NVQC063', {'page_path': window.location.pathname})
   });
 
   barba.init({
