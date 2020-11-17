@@ -10,8 +10,7 @@ ready(function() {
   }, { threshold: 0.5 });
 
   barba.hooks.after(() => {
-    ga('set', 'page', window.location.pathname);
-    ga('send', 'pageview');
+    gtag('config', 'UA-44465652-6', {'page_path': window.location.pathname})
   });
 
   barba.init({
