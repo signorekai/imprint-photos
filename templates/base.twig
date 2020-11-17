@@ -11,7 +11,7 @@
 		<header class="header">
 			{% block header %}
 					<a class="header__logo" href="{{blog.site_url}}/" rel="home">
-						<img src="{{ site.theme.link }}/static/images/logo.png" alt="">
+						{{ source("/static/images/logo--textless--white.svg" )}}
 					</a>
 					<nav class="header__nav" role="navigation">
 						{% if menu.get_items.length > 1 %}
