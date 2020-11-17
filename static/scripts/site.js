@@ -9,6 +9,11 @@ ready(function() {
     })
   }, { threshold: 0.5 });
 
+  barba.hooks.after(() => {
+    ga('set', 'page', window.location.pathname);
+    ga('send', 'pageview');
+  });
+
   barba.init({
     prevent: ({el}) => el.href.indexOf('wp-admin') !== -1 || el.data('lightbox'),
     views: [{
