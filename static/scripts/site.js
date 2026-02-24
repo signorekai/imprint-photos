@@ -66,14 +66,16 @@ ready(function() {
 
         next.container.f('.portfolio__masonry-item:not(.portfolio__masonry-description):not(.portfolio__masonry-view-more)').forEach(function(el) {
 
-          el.on('click', function (e) {
-            next.container.f('.gallery__photo').attr('src', (e.target.data('full-size')))
-            next.container.f('.gallery__description').innerText = e.target.data('description')
+          const $picture = el.f('picture')
+
+          $picture.on('click', function (e) {
+            next.container.f('.gallery__photo').attr('src', (el.data('full-size')))
+            next.container.f('.gallery__description').innerText = el.data('description')
             // console.log(e.target.attr('href'))
           })
 
           if (Modernizr.webp) {
-            el.f('img').attr('data-srcset', el.f('img').data('webp-srcset'));
+            $picture.f('img').attr('data-srcset', el.f('img').data('webp-srcset'));
             // } else {
             // el.f('img').attr('data-srcset', el.f('img').data('webp-srcset'));
           }
