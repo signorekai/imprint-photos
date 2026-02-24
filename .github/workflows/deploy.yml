@@ -22,3 +22,6 @@ jobs:
           port: 22
           uploads: |
             ./ => ${{ vars.SSH_FOLDER }}
+          ignore: |
+            *.git
+            */**/*git*
