@@ -1,0 +1,24 @@
+name: Deploy to environment
+
+# Trigger the workflow on push
+on: push
+
+# Authenticate to the the server via ssh
+# and run our deployment script (sftp upload)
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: SFTP upload
+        uses: Dylan700/sftp-upload-action@latest
+        with:
+          server: ${{ vars.SSH_HOST }}
+          username: ${{ vars.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          port: 22
+          uploads: |
+            ./theme/ => ${{ vars.SSH_FOLDER }}
