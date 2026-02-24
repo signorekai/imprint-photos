@@ -49,7 +49,15 @@ class StarterSite extends Timber\Site {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 
 		add_filter( 'sanitize_file_name', array( $this, 'so_3261107_hash_filename' ), 10 );
-		
+
+		// Disable comments
+		add_action( 'admin_init', array( $this, 'disable_comments' ) );
+		add_filter( 'comments_open', '__return_false', 20, 2 );
+		add_filter( 'pings_open', '__return_false', 20, 2 );
+		add_filter( 'comments_array', '__return_empty_array', 10, 2 );
+		add_action( 'admin_menu', array( $this, 'disable_comments_admin_menu' ) );
+		add_action( 'admin_bar_menu', array( $this, 'disable_comments_admin_bar' ), 999 );
+
 		remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 		remove_action( 'wp_print_styles', 'print_emoji_styles' );
 		remove_action('wp_head', 'rest_output_link_wp_head', 10);
@@ -240,6 +248,34 @@ class StarterSite extends Timber\Site {
 		remove_action('wp_head', 'wp_generator'); 									// remove wordpress version in header
 		remove_action('wp_head', 'rsd_link'); 											// remove XML-RPC RSD link
 		remove_action('wp_head', 'rest_output_link_wp_head', 10);		// disable WP REST API
+	}
+
+	public function disable_comments() {
+		$post_types = get_post_types();
+		foreach ( $post_types as $post_type ) {
+			if ( post_type_supports( $post_type, 'comments' ) ) {
+				remove_post_type_support( $post_type, 'comments' );
+				remove_post_type_support( $post_type, 'trackbacks' );
+			}
+		}
+
+		if ( wp_doing_ajax() ) {
+			return;
+		}
+
+		global $pagenow;
+		if ( $pagenow === 'edit-comments.php' ) {
+			wp_redirect( admin_url() );
+			exit;
+		}
+	}
+
+	public function disable_comments_admin_menu() {
+		remove_menu_page( 'edit-comments.php' );
+	}
+
+	public function disable_comments_admin_bar( $wp_admin_bar ) {
+		$wp_admin_bar->remove_node( 'comments' );
 	}
 
 	/**
