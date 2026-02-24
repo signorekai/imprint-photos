@@ -66,7 +66,7 @@ ready(function() {
 
         next.container.f('.portfolio__masonry-item:not(.portfolio__masonry-description):not(.portfolio__masonry-view-more)').forEach(function(el) {
 
-          el.on('mouseenter', function (e) {
+          el.on('click', function (e) {
             next.container.f('.gallery__photo').attr('src', (e.target.data('full-size')))
             next.container.f('.gallery__description').innerText = e.target.data('description')
             // console.log(e.target.attr('href'))
