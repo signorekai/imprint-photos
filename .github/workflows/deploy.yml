@@ -21,4 +21,4 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: 22
           uploads: |
-            ./theme/ => ${{ vars.SSH_FOLDER }}
+            ./ => ${{ vars.SSH_FOLDER }}
