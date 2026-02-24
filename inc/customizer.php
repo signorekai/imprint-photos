@@ -55,6 +55,28 @@ function add_customizer_settings($wpc) {
     'settings' => 'footer_bg',
     ) ) 
   );
+  /*
+   * Add "Home Page Options" section
+   */
+
+  $wpc->add_section( 'home_page_options', array(
+    'title' => __('Home Page Options', 'winterfell'),
+    'priority' => 31,
+  ));
+
+  $wpc->add_setting( 'home_bg_color', array(
+    'default' => '#e8e8e8',
+    'sanitize_callback' => 'sanitize_hex_color',
+  ));
+
+  $wpc->add_control( new WP_Customize_Color_Control( $wpc, 'home_bg_color', array(
+    'label' => __('Home Page Background Color', 'winterfell'),
+    'section' => 'home_page_options',
+    'settings' => 'home_bg_color',
+    'active_callback' => function() {
+      return is_front_page();
+    },
+  )));
 }
 
 

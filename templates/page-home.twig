@@ -1,6 +1,7 @@
 {% extends "base.twig" %}
 
 {% block content %}
+  <style>body { background-color: {{ home_bg_color }}; }</style>
   <div data-barba="container" data-barba-namespace="home" class="{{body_class}}">
     <div class="wrapper wrapper--full">
       {% for work in works %}
