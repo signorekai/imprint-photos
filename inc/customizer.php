@@ -65,7 +65,7 @@ function add_customizer_settings($wpc) {
   ));
 
   $wpc->add_setting( 'home_bg_color', array(
-    'default' => '#e8e8e8',
+    'default' => '#191919',
     'sanitize_callback' => 'sanitize_hex_color',
   ));
 
