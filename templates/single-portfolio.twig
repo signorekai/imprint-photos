@@ -11,7 +11,7 @@
           <aside class="portfolio__sidebar">
             <nav class="works-nav works-nav--inline">
             {% for work in works %}
-              <a class="works-nav__link works-nav__link--blue {% if work.id == post.id %}works-nav__link--current{% endif %}" href="{{work.link}}" data-target="#overlay-{{work.ID}}" alt="{{work.custom['main_description']}}">{{work.post_title}}</a>
+              <a class="works-nav__link works-nav__link--accent {% if work.id == post.id %}works-nav__link--current{% endif %}" href="{{work.link}}" data-target="#overlay-{{work.ID}}" alt="{{work.custom['main_description']}}">{{work.post_title}}</a>
             {% endfor %}
             </nav>
               <div class="portfolio__masonry">

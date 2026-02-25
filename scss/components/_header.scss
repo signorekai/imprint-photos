@@ -255,7 +255,7 @@
     @extend .header__svg--show;
   
     .header__svg-group {
-      fill: $primary;
+      fill: var(--accent);
     }
   }
 
