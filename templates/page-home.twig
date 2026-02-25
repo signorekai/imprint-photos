@@ -1,8 +1,8 @@
 {% extends "base.twig" %}
 
 {% block content %}
-  <style>body.home.home { background-color: {{ home_bg_color }}; }</style>
   <div data-barba="container" data-barba-namespace="home" class="{{body_class}}">
+    <style>body.home.home { background-color: {{ home_bg_color }}; }</style>
     <div class="wrapper wrapper--full">
       {% for work in works %}
         <div class="overlay" id="overlay-{{work.ID}}" style="background-image:url({{work.thumbnail.src('hd')}})" ></div>
