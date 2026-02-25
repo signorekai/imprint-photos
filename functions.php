@@ -345,7 +345,7 @@ class StarterSite extends Timber\Site {
 			'posts_per_page' => 50
 		);
 		$context['works'] = new Timber\PostQuery( $query );
-		$context['home_bg_color'] = get_theme_mod('home_bg_color', '#e8e8e8');
+		$context['accent'] = get_theme_mod('accent', '#191919');
 		return $context;
 	}
 

@@ -156,6 +156,14 @@ $bulletMargin: 10px;
   }
 }
 
+.works-nav__link--accent {
+  color: var(--accent);
+
+  &:before {
+    background-color: var(--accent);
+  }
+}
+
 .wrapper {
   margin: 0 auto;
   max-width: $max-width;

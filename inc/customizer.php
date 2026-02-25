@@ -64,15 +64,15 @@ function add_customizer_settings($wpc) {
     'priority' => 31,
   ));
 
-  $wpc->add_setting( 'home_bg_color', array(
+  $wpc->add_setting( 'accent', array(
     'default' => '#191919',
     'sanitize_callback' => 'sanitize_hex_color',
   ));
 
-  $wpc->add_control( new WP_Customize_Color_Control( $wpc, 'home_bg_color', array(
-    'label' => __('Home Page Background Color', 'winterfell'),
+  $wpc->add_control( new WP_Customize_Color_Control( $wpc, 'accent', array(
+    'label' => __('Accent Color', 'winterfell'),
     'section' => 'home_page_options',
-    'settings' => 'home_bg_color',
+    'settings' => 'accent',
     'active_callback' => function() {
       return is_front_page();
     },
