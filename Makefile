@@ -1,5 +1,8 @@
-css:
+watch-css:
 	nodemon -w scss/ -x "sass scss/main.scss static/css/main.css -s compressed" -e ".scss"
+
+css:
+	sass scss/main.scss static/css/main.css -s compressed
 
 production:
 	git push && git checkout master && git merge develop && git push && make update-tag && git checkout develop
