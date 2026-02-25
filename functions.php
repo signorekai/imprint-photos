@@ -299,13 +299,14 @@ class StarterSite extends Timber\Site {
 
 		wp_register_script('lightbox', get_template_directory_uri() . '/vendor/lightbox.min.js', false, '1.7.0', true);
 		wp_register_style('lightbox', get_template_directory_uri() . '/vendor/lightbox.min.css', false, '1.7.0');
+		wp_enqueue_script( 'alpinejs', get_template_directory_uri() . '/vendor/alpine.min.js', array(), '3.15.8' );
 
 		wp_enqueue_script('masonry');
 		wp_enqueue_script('lightbox');
 		wp_enqueue_script('rallax');
 
 		wp_enqueue_script( 'f', get_template_directory_uri() . '/static/scripts/f.js', array(), '1.0.0' );
-		wp_enqueue_script( 'site', get_template_directory_uri() . '/static/scripts/site.js', array('f', 'barbajs'), '1.0.0', true);
+		wp_enqueue_script( 'site', get_template_directory_uri() . '/static/scripts/site.js', array('f', 'barbajs', 'alpinejs'), '1.0.0', ['strategy' => 'defer']);
 
 		if ( is_page() ) {
 			$dep = array('f', 'rallax');
