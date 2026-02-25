@@ -11,14 +11,21 @@
           <aside class="portfolio__sidebar">
             <nav class="works-nav works-nav--inline">
             {% for work in works %}
-              <a class="works-nav__link works-nav__link--accent {% if work.id == post.id %}works-nav__link--current{% endif %}" href="{{work.link}}" data-target="#overlay-{{work.ID}}" alt="{{work.custom['main_description']}}">{{work.post_title}}</a>
               {% if work.id == post.id %}
-               
-                <div class="flex justify-center">
+              <div class="current-work">
+                <a class="works-nav__link works-nav__link--accent works-nav__link--current" href="{{work.link}}" data-target="#overlay-{{work.ID}}" alt="{{work.custom['main_description']}}">{{work.post_title}}</a>
+                <div class="works-nav__dropdown">
                     <div
                         x-data="{
                             open: false,
-                            selected: '',
+                            selected: '{{post.meta('projects')[0].name}}',
+                            projectMap: { {% for project in post.meta('projects') %}'{{project.name|slugify}}': '{{project.name}}'{% if not loop.last %}, {% endif %}{% endfor %} },
+                            init() {
+                                const hash = window.location.hash.slice(1);
+                                if (hash && this.projectMap[hash]) {
+                                    this.selected = this.projectMap[hash];
+                                }
+                            },
                             toggle() {
                                 if (this.open) {
                                     return this.close()
@@ -43,19 +50,19 @@
                     >
                         <!-- Button -->
                         <button
-                            x-ref="button"
-                            x-on:click="toggle()"
-                            :aria-expanded="open"
-                            :aria-controls="$id('dropdown-button')"
-                            type="button"
-                            class="relative flex items-center whitespace-nowrap justify-center gap-2 py-2 rounded-lg shadow-sm bg-white hover:bg-gray-50 text-gray-800 border border-gray-200 hover:border-gray-200 px-4"
+                          x-ref="button"
+                          x-on:click="toggle()"
+                          :aria-expanded="open"
+                          :aria-controls="$id('dropdown-button')"
+                          type="button"
+                          class=""                       
                         >
-                            <span x-text="selected">Options</span>
+                          <span x-text="selected"></span>
 
-                            <!-- Heroicon: micro chevron-down -->
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
-                                <path fill-rule="evenodd" d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
-                            </svg>
+                          <!-- Heroicon: micro chevron-down -->
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
+                              <path fill-rule="evenodd" d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                          </svg>
                         </button>
 
                         <!-- Panel -->
@@ -66,17 +73,23 @@
                             x-on:click.outside="close($refs.button)"
                             :id="$id('dropdown-button')"
                             x-cloak
-                            class="absolute left-0 min-w-48 rounded-lg shadow-sm mt-2 z-10 origin-top-left bg-white p-1.5 outline-none border border-gray-200"
+                            class="panel"
                         >
                           {% for project in post.meta('projects') %}
-                            <a href="#{{project.name|slugify}}" class="px-2 lg:py-1.5 py-2 w-full flex items-center rounded-md transition-colors text-left text-gray-800 hover:bg-gray-50 focus-visible:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed">
-                            {{project.name}}
+                            <a href="#{{project.name|slugify}}"
+                               x-on:click="selected = '{{project.name}}'; close()"
+                               class="">
+                              {{project.name}}
                             </a>
                           {% endfor %}
 
                         </div>
                     </div>
                 </div> 
+              </div>
+              {% endif %}
+              {% if work.id != post.id %}
+                <a class="works-nav__link works-nav__link--accent " href="{{work.link}}" data-target="#overlay-{{work.ID}}" alt="{{work.custom['main_description']}}">{{work.post_title}}</a>
               {% endif %}
             {% endfor %}
             </nav>
