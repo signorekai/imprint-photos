@@ -8,45 +8,53 @@
           <h1 class="portfolio__title">{{post.title}}</h1>
         </header> #}
         <section class="portfolio__body-wrapper">
-          <aside class="portfolio__sidebar">
+          <aside class="portfolio__sidebar"
+            x-data="{
+                open: false,
+                selected: '{{post.meta('projects')[0].name}}',
+                projectMap: { {% for project in post.meta('projects') %}'{{project.name|slugify}}': '{{project.name}}'{% if not loop.last %}, {% endif %}{% endfor %} },
+                init() {
+                    const hash = window.location.hash.slice(1);
+                    if (hash && this.projectMap[hash]) {
+                        this.selected = this.projectMap[hash];
+                    }
+                    this.$watch('selected', (value) => {
+                        const slug = Object.keys(this.projectMap).find(key => this.projectMap[key] === value);
+                        this.$dispatch('project-selected', { project: value, slug: slug });
+                    });
+                    // Dispatch initial event after a short delay to ensure listener is ready
+                    setTimeout(() => {
+                        const slug = Object.keys(this.projectMap).find(key => this.projectMap[key] === this.selected);
+                        this.$dispatch('project-selected', { project: this.selected, slug: slug });
+                    }, 100);
+                },
+                toggle() {
+                    if (this.open) {
+                        return this.close()
+                    }
+                    this.$refs.button.focus()
+                    this.open = true
+                },
+                close(focusAfter) {
+                    if (! this.open) return
+                    this.open = false
+                    focusAfter && focusAfter.focus()
+                }
+            }"
+          >
             <nav class="works-nav works-nav--inline">
             {% for work in works %}
               {% if work.id == post.id %}
               <div class="current-work">
                 <a class="works-nav__link works-nav__link--accent works-nav__link--current" href="{{work.link}}" data-target="#overlay-{{work.ID}}" alt="{{work.custom['main_description']}}">{{work.post_title}}</a>
+                {% if post.meta('projects')|length > 1 %}
+                <span class="works-nav__divider">/</span>
                 <div class="works-nav__dropdown">
                     <div
-                        x-data="{
-                            open: false,
-                            selected: '{{post.meta('projects')[0].name}}',
-                            projectMap: { {% for project in post.meta('projects') %}'{{project.name|slugify}}': '{{project.name}}'{% if not loop.last %}, {% endif %}{% endfor %} },
-                            init() {
-                                const hash = window.location.hash.slice(1);
-                                if (hash && this.projectMap[hash]) {
-                                    this.selected = this.projectMap[hash];
-                                }
-                            },
-                            toggle() {
-                                if (this.open) {
-                                    return this.close()
-                                }
-
-                                this.$refs.button.focus()
-
-                                this.open = true
-                            },
-                            close(focusAfter) {
-                                if (! this.open) return
-
-                                this.open = false
-
-                                focusAfter && focusAfter.focus()
-                            }
-                        }"
                         x-on:keydown.escape.prevent.stop="close($refs.button)"
                         x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
                         x-id="['dropdown-button']"
-                        class="relative"
+                        style="position: relative"
                     >
                         <!-- Button -->
                         <button
@@ -55,7 +63,6 @@
                           :aria-expanded="open"
                           :aria-controls="$id('dropdown-button')"
                           type="button"
-                          class=""                       
                         >
                           <span x-text="selected"></span>
 
@@ -85,7 +92,8 @@
 
                         </div>
                     </div>
-                </div> 
+                </div>
+                {% endif %} 
               </div>
               {% endif %}
               {% if work.id != post.id %}
@@ -96,14 +104,14 @@
               <div class="portfolio__masonry">
                 <div href="" class="portfolio__masonry-item-sizer"></div>
                 {% for project in post.meta('projects') %}
-                  <div class="portfolio__masonry-item portfolio__masonry-item--width3 portfolio__masonry-description" id="{{project.name|slugify}}">
+                  <div class="portfolio__masonry-item portfolio__masonry-item--width3 portfolio__masonry-description" id="{{project.name|slugify}}" :class="{ 'filtered-out': selected !== '{{project.name}}' }">
                   <h2>{{project.name}}</h2>
                   {% if project.name != project.description %}
                     <h4>{{project.description}}</h4>
                   {% endif %}
                   </div>
                   {% for photo in project.photos %}
-                    <div data-project="{{project.name|slugify}}" data-description="{{project.description}}" data-full-size="{{ photo.sizes.large }}" class="portfolio__masonry-item {% if post.meta('projects')|length == 1 %}portfolio__masonry-item--active{% endif %}">
+                    <div data-project="{{project.name|slugify}}" data-description="{{project.description}}" data-full-size="{{ photo.sizes.large }}" class="portfolio__masonry-item {% if post.meta('projects')|length == 1 %}portfolio__masonry-item--active{% endif %}" :class="{ 'filtered-out': selected !== '{{project.name}}' }">
                       <picture class="portfolio__masonry-pic" style="padding-top: {{ (photo.sizes['thumbnail-height'] / photo.sizes['thumbnail-width']) * 100 }}%">
                         <img class="portfolio__masonry-img"
                           src="{{photo.sizes.thumbnail|resize(10)}}"

@@ -95,6 +95,22 @@ ready(function() {
               msnry.layout()
             }, 200)
           })
+        })
+
+        // Listen for project selection from Alpine dropdown (desktop only)
+        document.addEventListener('project-selected', function(e) {
+          console.log('project-selected event', e.detail)
+          setTimeout(() => {
+            msnry.layout()
+          }, 50)
+
+          // Auto-select first thumbnail of filtered project
+          const photos = next.container.f(`.portfolio__masonry-item[data-project='${e.detail.slug}']:not(.portfolio__masonry-view-more)`)
+          const firstPhoto = photos.length ? photos[0] : photos
+          if (firstPhoto && firstPhoto.data) {
+            next.container.f('.gallery__photo').attr('src', firstPhoto.data('full-size'))
+            next.container.f('.gallery__description').innerText = firstPhoto.data('description')
+          }
         }) 
 
         const headerParallax = rallax(f('.portfolio__header'), {

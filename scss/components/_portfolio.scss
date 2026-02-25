@@ -177,7 +177,7 @@
   width: 100%;
   text-align: center;
   padding: 0.5em 1em 1em;
-  
+
   h2 {
     color: $secondary;
     text-shadow: none;
@@ -192,6 +192,13 @@
   }
 
   @include desktop {
+    display: none;
+  }
+}
+
+// Desktop-only filtering for project dropdown
+@include desktop {
+  .portfolio__masonry-item.filtered-out {
     display: none;
   }
 }
