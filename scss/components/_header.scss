@@ -1,6 +1,8 @@
 .links {
   @include reset-list;
   @include clearfix;
+  display: flex;
+  flex-direction: column;
   line-height: 0;
   padding: 0;
   margin: 0;
@@ -11,6 +13,10 @@
   transform: translateX(-20px);
   transition: all 0.4s $easing;
   margin-right: 20px;
+
+  .current-menu-item {
+    order: 1;
+  }
 }
 
 .links--short {
