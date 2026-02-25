@@ -91,7 +91,7 @@
     margin-bottom: 1rem;
 
     @include desktop {
-      display: block;
+      display: inline-flex;
       margin-top: 1rem;
       margin-bottom: 2rem;
     }
